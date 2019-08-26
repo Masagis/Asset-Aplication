@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "../base_url.php";
+include_once("../config/config.php");
 ?>
 
 <!DOCTYPE html>
@@ -133,21 +134,21 @@ include_once "../base_url.php";
           <div class="row">
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <a type="button" href="kategori.php" class="btn btn-secondary btn-lg">KATEGORI</a>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <a type="button" href="kategori.php"class="btn btn-sucess btn-block" style="font-size: 20px">KATEGORI</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
             <div class="col-xl-3 col-lg-6">
                 <div class="card card-stats mb-4 mb-xl-0">
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <a type="button" href="aset.php"class="btn btn-secondary btn-lg">ASET</a>
+                        <a type="button" href="aset.php"class="btn btn-sucess btn-block" style="font-size: 20px">ASET</a>
                       </div>
                     </div>
                   </div>
@@ -158,7 +159,7 @@ include_once "../base_url.php";
                     <div class="card-body">
                       <div class="row">
                         <div class="col">
-                          <a type="button" href="penyusutan.php"class="btn btn-secondary btn-lg">PENYUSUTAN</a>
+                          <a type="button" href="penyusutan.php"class="btn btn-sucess btn-block" style="font-size: 20px">PENYUSUTAN</a>
                         </div>
                       </div>
                     </div>
@@ -169,7 +170,7 @@ include_once "../base_url.php";
                       <div class="card-body">
                         <div class="row">
                           <div class="col">
-                            <a type="a" href="laporan.php" class="btn btn-secondary btn-lg">LAPORAN</a>
+                            <a type="a" href="laporan.php" class="btn btn-sucess btn-block" style="font-size: 20px">LAPORAN</a>
                           </div>
                         </div>
                       </div>
@@ -193,14 +194,29 @@ include_once "../base_url.php";
                       <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Project</th>
-                            <th scope="col">Budget</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Users</th>
-                            <th scope="col">Completion</th>
-                            <th scope="col"></th>
+                            <th>no</th>
+                            <th>Id Kategori</th>
+                            <th>Nama Kategori</th>
+                            <th>Aksi</th>
                           </tr>
                         </thead>
+                        <tbody>
+                                    <?php
+                                        include '../config/config.php';
+                                        $kategori = mysqli_query($mysqli,"SELECT * FROM tb_kategori");
+                                        $no = 1;
+                                        if($kategori){
+                                            while($row = mysqli_fetch_array($kategori))
+                                            {
+                                                echo "<tr>
+                                                <td>".$no++."</td>
+                                                <td>".$row['id_kategori']."</td>
+                                                <td>".$row['Nm_katagori']."</td>
+                                            </tr>";
+                                            }
+                                        }
+                                    ?>
+                                </tbody>
                       </table>
                     </div>
                   </div>
@@ -208,7 +224,7 @@ include_once "../base_url.php";
               </div>
   
       <!-- Footer -->
-      <footer class="footer">
+      <footer class="footer" style="position: fixed; bottom: 0px;width: 100%">
           <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
               <div class="copyright text-center text-xl-left text-muted">
