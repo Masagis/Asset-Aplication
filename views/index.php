@@ -131,23 +131,24 @@ include_once "../base_url.php";
       <div class="header-body">
         <!-- Card stats -->
         <div class="row">
+          
           <div class="col-xl-3 col-lg-6">
             <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <a type="button" href="kategori.php" class="btn btn-secondary btn-lg">KATEGORI</a>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <a type="button" href="kategori.php"class="btn btn-sucess btn-block" style="font-size: 20px">KATEGORI</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </div>
           <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <a type="button" href="aset.php"class="btn btn-secondary btn-lg">ASET</a>
+                      <a type="button" href="aset.php"class="btn btn-sucess btn-block" style="font-size: 20px">ASET</a>
                     </div>
                   </div>
                 </div>
@@ -158,7 +159,7 @@ include_once "../base_url.php";
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <a type="button" href="penyusutan.php"class="btn btn-secondary btn-lg">PENYUSUTAN</a>
+                        <a type="button" href="penyusutan.php"class="btn btn-sucess btn-block" style="font-size: 20px">PENYUSUTAN</a>
                       </div>
                     </div>
                   </div>
@@ -169,7 +170,7 @@ include_once "../base_url.php";
                     <div class="card-body">
                       <div class="row">
                         <div class="col">
-                          <a type="a" href="laporan.php" class="btn btn-secondary btn-lg">LAPORAN</a>
+                          <a type="a" href="laporan.php" class="btn btn-sucess btn-block" style="font-size: 20px">LAPORAN</a>
                         </div>
                       </div>
                     </div>
@@ -208,7 +209,7 @@ include_once "../base_url.php";
             </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" style="position: fixed; bottom: 0px;width: 100%">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
