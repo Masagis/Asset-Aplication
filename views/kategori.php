@@ -114,7 +114,7 @@ include_once "../base_url.php";
                   <!-- <h6 class="text-overflow m-0">Welcome!</h6> -->
                 </div>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="../controller/logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
