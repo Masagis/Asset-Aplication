@@ -1,7 +1,7 @@
 <?php
 
 $databaseHost = 'localhost';
-$databaseName = '';
+$databaseName = 'db_assets';
 $databaseUsername = 'root';
 $databasePassword = '';
 
