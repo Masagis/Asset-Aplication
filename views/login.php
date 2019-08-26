@@ -76,13 +76,13 @@ include_once "../base_url.php";
               <div class="text-center text-muted mb-4">
                 <small>Sign in with </small>
               </div>
-              <form role="form">
+              <form role="form" method="post" action="<?php echo $base_url ?>controller/login.php">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" name="email" placeholder="Masukan Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -90,7 +90,7 @@ include_once "../base_url.php";
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" name="password" placeholder="Masukan Password" type="password">
                   </div>
                 </div>
                 <!-- <div class="custom-control custom-control-alternative custom-checkbox">
@@ -100,7 +100,7 @@ include_once "../base_url.php";
                   </label>
                 </div> -->
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="submit" class="btn btn-primary my-4">Masuk</button>
                 </div>
               </form>
             </div>
