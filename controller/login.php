@@ -5,15 +5,16 @@ $email = $_POST['email']; // Ambil value username yang dikirim dari form
 $password = $_POST['password']; // Ambil value password yang dikirim dari form
 // Buat query untuk mengecek apakah ada data user dengan username dan password yang dikirim dari form
 
-$data = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email' AND password='$password'");
+$data = mysqli_query($mysqli, "SELECT * FROM user WHERE email='$email' AND password='$password'");
 $data =  mysqli_fetch_array($data);
 
 // Cek apakah variabel $data ada datanya atau tidak
 if(!empty($data)){ // Jika tidak sama dengan empty (kosong)
   $_SESSION['email'] = $data['email']; // Set session untuk username (simpan username di session)
-  $_SESSION['nama'] = $data['name']; // Set session untuk nama (simpan nama di session)
-//   $_SESSION['id'] = $data['id'];
-//   $_SESSION['level'] = $data['level'];
+  $_SESSION['password'] = $data['password'];
+// $_SESSION['nama'] = $data['name']; // Set session untuk nama (simpan nama di session)
+   $_SESSION['id'] = $data['id'];
+   $_SESSION['level'] = $data['level'];
 //   $_SESSION['no_hp'] = $data['mobile'];
   
   setcookie("message","delete",time()-1); // Kita delete cookie message
