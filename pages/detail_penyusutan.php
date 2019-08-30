@@ -128,10 +128,10 @@ $tahun = $_POST['umur_ekonomis'];
                                             <th class="text-center">Nama Aset</th>
                                             <th class="text-center">Tgl Perolehan</th>
                                             <th class="text-center">Hrg Perolehan</th>
-                                            <th class="text-center">Umur Ekonomis</th>
+                                            <th class="text-center">Tahun Penyusutan</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Nilai Susut</th>
-                                            <th class="text-center">Aksi</th>
+                                            
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -142,8 +142,10 @@ $tahun = $_POST['umur_ekonomis'];
                                                 if($kategori){
                                                     while($row = mysqli_fetch_array($kategori))
                                                     {
+                                                        $nilai = ($row['hrg_perolehan'] - $row['nilai_sisa']) / $tahun;
+                                                        $susut = $row['hrg_perolehan'];
                                                         for($i = 1; $i <= $tahun; $i++){
-                                                            $nilai = ($row['hrg_perolehan'] - $row['nilai_sisa']) / $i;
+                                                            $susut = $susut - $nilai;
                                                             echo "<tr>
                                                             <td>".$no++."</td>
                                                             <td>".$row['id_penyusutan']."</td>
@@ -152,12 +154,8 @@ $tahun = $_POST['umur_ekonomis'];
                                                             <td>".$row['hrg_perolehan']."</td>
                                                             <td>".$i."</td>
                                                             <td>".$row['nilai_sisa']."</td>
-                                                            <td>".$nilai."</td>
-                                                            <td>
-                                                                <form method='post' action='".$base_url."/controller/delete.php'>
-                                                                    <i class='ik ik-download'></i>
-                                                                </form>
-                                                            </td>
+                                                            <td>".$susut."</td>
+                                                            
                                                             </tr>";
                                                         }
                                                     }
