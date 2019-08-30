@@ -137,7 +137,7 @@ $tahun = $_POST['umur_ekonomis'];
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $kategori = mysqli_query($mysqli,"SELECT tb_penyusutan.id_penyusutan,tb_asset.nama_asset, tb_asset.tgl_perolehan,tb_asset.hrg_perolehan,tb_asset.umur_ekonomis,tb_asset.nilai_sisa,tb_penyusutan.total_penyusutan FROM tb_penyusutan INNER JOIN tb_asset ON tb_penyusutan.id_penyusutan = tb_asset.id_asset");
+                                                $kategori = mysqli_query($mysqli,"SELECT tb_penyusutan.id_penyusutan,tb_asset.nama_asset,tb_asset.tgl_perolehan,tb_asset.hrg_perolehan,tb_asset.umur_ekonomis,tb_asset.nilai_sisa,tb_penyusutan.total_penyusutan FROM tb_penyusutan INNER JOIN tb_asset ON tb_penyusutan.id_penyusutan = tb_asset.id_asset");
                                                 $no = 1;
                                                 if($kategori){
                                                     while($row = mysqli_fetch_array($kategori))

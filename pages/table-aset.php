@@ -131,10 +131,10 @@ include_once("../config/config.php");
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $kategori = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori");
+                                                $aset = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori");
                                                 $no = 1;
-                                                if($kategori){
-                                                    while($row = mysqli_fetch_array($kategori))
+                                                if($aset){
+                                                    while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
                                                         <td>".$no++."</td>
