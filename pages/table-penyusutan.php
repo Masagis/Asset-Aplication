@@ -125,7 +125,7 @@ include_once("../config/config.php");
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Nilai Susut</th>
-                                            <th class="text-center">Aksi</th>
+                                            
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -151,13 +151,7 @@ include_once("../config/config.php");
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
                                                             </form>
                                                         </td>
-                                                        <td>
-                                                        <form method='post' action='".$base_url."/controller/delete.php'>
-                                                            <i class='ik ik-file-plus'></i>
-                                                            <i class='ik ik-edit'></i>
-                                                            <i class='ik ik-trash-2'></i>
-                                                        </form>
-                                                    </td>
+                                                        
                                                     </tr>";
                                                     }
                                                 }

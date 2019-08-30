@@ -134,9 +134,7 @@ include_once("../config/config.php");
                                                         <td>".$row['id_kategori']."</td>
                                                         <td>".$row['nm_katagori']."</td>
                                                         <td>
-                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori'><i class='ik ik-edit'></i></i></button>    
-                                                        </td>
-                                                        <td>
+                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori'><i class='ik ik-edit'></i></i></button>
                                                         <button type='button' name ='hapus' class='btn btn-danger'><i class='ik ik-trash-2'></i></i></button>
                                                         </td>
                                                     </tr>";

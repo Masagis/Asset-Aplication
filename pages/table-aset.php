@@ -125,7 +125,6 @@ include_once("../config/config.php");
                                             <th class="text-center">Harga Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
-                                            <th class="text-center">Id Kategori</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                         </thead>
@@ -146,12 +145,10 @@ include_once("../config/config.php");
                                                         <td>".$row['hrg_perolehan']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
-                                                        <td>".$row['id_kategori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."/controller/delete.php'>
-                                                            <i class='ik ik-file-plus'></i>
-                                                            <i class='ik ik-edit'></i>
-                                                            <i class='ik ik-trash-2'></i>
+                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori'><i class='ik ik-edit'></i></i></button>
+                                                        <button type='button' name ='hapus' class='btn btn-danger'><i class='ik ik-trash-2'></i></i></button>
                                                         </form>
                                                     </td>
                                                     </tr>";
