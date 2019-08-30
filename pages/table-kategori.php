@@ -24,6 +24,8 @@ include_once("../config/config.php");
         <link rel="stylesheet" href="<?php echo $base_url ?>assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="<?php echo $base_url ?>assets/dist/css/theme.min.css">
         <script src="<?php echo $base_url ?>assets/src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="<?php echo $base_url ?>assets/js/jquery-3.1.1.min.js"></script>
+        
     </head>
 
     <body>
@@ -134,7 +136,9 @@ include_once("../config/config.php");
                                                         <td>".$row['id_kategori']."</td>
                                                         <td>".$row['nm_katagori']."</td>
                                                         <td>
-                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori'><i class='ik ik-edit'></i></i></button>
+                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i></i>
+                                                        
+                                                        </button>
                                                         <button type='button' name ='hapus' class='btn btn-danger'><i class='ik ik-trash-2'></i></i></button>
                                                         </td>
                                                     </tr>";
@@ -150,33 +154,55 @@ include_once("../config/config.php");
                 </div>
             </div>
 
-                    <div class="modal fade" id="tambah_kategori" role="dialog">
+                    <div class="modal fade" id="edit_kategori" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                <form method="POST" action="<?php echo $base_url ?>controller/tambah_kategori.php">
+                                
                                     <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Tambah Kategori</h4>
+                                        <h4 class="modal-title w-100 font-weight-bold">Edit Kategori</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body mx-3">
-                                        <div class="md-form mb-3">
-                                        <h5>ID Kategori</h5><br>
-                                        <input type="text" name="id" class="form-control" placeholder="...">
-                                        </div>
-                                    <div class="md-form mb-3">
-                                        <h5>Nama Kategori</h5><br>
-                                        <input type="text" name="nama" class="form-control" placeholder="...">
+                                        <div class="hasil-data"></div>
                                     </div>
-                                </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
-                                    </div>
-                                </form>
+                                    
+                                
                                 </div>
                             </div>
                         </div>
+
+                        <script type="text/javascript">
+
+                        $(document).ready(function(){
+
+                            $('#edit_kategori').on('show.bs.modal', function (e) {
+
+                                var idx = $(e.relatedTarget).data('id');
+
+                                //menggunakan fungsi ajax untuk pengambilan data
+
+                                $.ajax({
+
+                                    type : 'post',
+
+                                    url : 'detail.php',
+
+                                    data :  'idx='+ idx,
+
+                                    success : function(data){
+
+                                    $('.hasil-data').html(data);//menampilkan data ke dalam modal
+
+                                    }
+
+                                });
+
+                             });
+
+                        });
+
+                      </script>
 
 
                 <footer class="footer">
