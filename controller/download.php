@@ -12,13 +12,13 @@ $pdf->SetTopMargin(0);
 // membuat halaman baru
 $pdf->AddPage();
  // mengambil gambar untuk header/kopsurat
-// $pdf->Image('./assets/img/header.jpg',20,null,169,36,'jpg');
+$pdf->Image('../assets/img/header.jpg',20,null,169,36,'jpg');
  // setting jenis font yang akan digunakan		
 $pdf->SetFont('Times','B',14);
 // $data=$this->Menu_model->getUnduh($kodemk);
    // mencetak string 
-$pdf->Cell(169,4,'',0,2);
-$pdf->Cell(43,4,'',0,0);$pdf->Cell(110,5,'KERTAS KERJA PENYUSUTAN ASET TETAP','B',0,'C');
+$pdf->Cell(169,5,'',0,2);
+$pdf->Cell(35,4,'',0,0);$pdf->Cell(107,5,'KERTAS KERJA PENYUSUTAN ASET TETAP','B',0,'C');
 $pdf->Cell(169,4,'',0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(80,8,'',0,2);
