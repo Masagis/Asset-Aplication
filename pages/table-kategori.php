@@ -136,10 +136,12 @@ include_once("../config/config.php");
                                                         <td>".$row['id_kategori']."</td>
                                                         <td>".$row['nm_katagori']."</td>
                                                         <td>
-                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i></i>
-                                                        
+                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i>
                                                         </button>
-                                                        <button type='button' name ='hapus' class='btn btn-danger'><i class='ik ik-trash-2'></i></i></button>
+                                                        <form method='post' action='".$base_url."controller/delete_kategori.php'>
+                                                        <button type'button' class='btn btn-alret' name='hapus'><i class='ik ik-trash-2'></i>
+                                                        <input type='hidden' name='id' value=".$row['id_kategori']."></button>
+                                                    </form>
                                                         </td>
                                                     </tr>";
                                                     }
@@ -154,7 +156,7 @@ include_once("../config/config.php");
                 </div>
             </div>
 
-                    <div class="modal fade" id="edit_kategori" role="dialog">
+                        <div class="modal fade" id="edit_kategori" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 
@@ -171,6 +173,8 @@ include_once("../config/config.php");
                                 </div>
                             </div>
                         </div>
+
+                        
 
                         <script type="text/javascript">
 
@@ -203,6 +207,8 @@ include_once("../config/config.php");
                         });
 
                       </script>
+
+                      
 
 
                 <footer class="footer">
