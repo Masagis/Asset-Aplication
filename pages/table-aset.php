@@ -113,7 +113,12 @@ include_once("../config/config.php");
                                     <div class="card-header d-block">
                                         <h3>Tabel Aset</h3>
                                     </div>
+                                    
                                     <div class="card-body">
+                                        <div class="text-right">
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' "><i class="fa fa-plus-square" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
@@ -166,6 +171,97 @@ include_once("../config/config.php");
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="tambah_asset" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">Tambah Asset</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <form action="tambah_asset.php" method="post">
+
+                                        <div class="form-group">
+
+                                            <form action="tambah_asset.php" method="post">
+
+                                                <div class="form-group">
+
+                                                    <label>Nama Asset</label>
+
+                                                    <input type="text" class="form-control" name="nama_asset" placeholder="Masukan nama asset">
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Quantity</label>
+
+                                                    <input type="text" class="form-control" name="qty" placeholder="Masukan quantity">
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Tanggal Perolehan</label>
+
+                                                    <input type="date" class="form-control" name="tgl_perolehan" >
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Harga Perolehan</label>
+
+                                                    <input type="text" class="form-control" name="hrg_perolehan" placeholder="Masukan harga perolehan">
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Umur Ekonomis</label>
+
+                                                    <input type="text" class="form-control" name="umur_ekonomis" placeholder="Masukan umur ekonomis">
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Nilai Sisa</label>
+
+                                                    <input type="text" class="form-control" name="nilai_sisa" placeholder="Masukan nilai sisa">
+
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <label>Kategori</label>
+
+                                                    <select name="kategori" class="form-control" required>
+                                                        <option value="">---- pilih ----</option>
+                                                        <option value="1" > 1 </option>
+                                                        <option value="2" > 2 </option>
+                                                    </select>
+
+                                                </div>
+
+                                                 <button class="btn btn-primary" type="submit">Tambah</button>
+
+                                            </form>
+
+                                        </div>
+
+                                          
+
+                                    </form>
+                                    </div>
+                                    
+                                
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="modal fade" id="edit_asset" role="dialog">
                             <div class="modal-dialog" role="document">
