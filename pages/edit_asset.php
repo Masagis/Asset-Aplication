@@ -29,9 +29,7 @@
 
         //jika  berhasil tampil ini
 
-        echo "Data Berhasil Diubah"."</br>";
-
-        echo "<a href='table-kategori.php'>Kembali Ke Halaman Depan</a>";
+        header("location: ../pages/table-asset.php"); 
 
     } else {
 
