@@ -112,8 +112,15 @@ include_once("../config/config.php");
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header"><h3>Tabel Kategori</h3></div>
+                                    <div class="card-header"><h3>Tabel Kategori</h3>
+                                        
+                                    </div>
+                                    
                                     <div class="card-body">
+                                        <div class="text-right">
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_kategori' "><i class="fa fa-plus-square" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                         <tr>
@@ -155,6 +162,37 @@ include_once("../config/config.php");
                     </div>
                 </div>
             </div>
+
+                    <div class="modal fade" id="tambah_kategori" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">Tambah Kategori</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <form action="tambah_kategori.php" method="post">
+
+                                        <div class="form-group">
+
+                                            <label>Nama Kategori</label>
+
+                                            <input type="text" class="form-control" name="nama" placeholder="Masukan nama kategori">
+
+                                        </div>
+
+                                          <button class="btn btn-primary" type="submit">tambah</button>
+
+                                    </form>
+                                    </div>
+                                    
+                                
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="modal fade" id="edit_kategori" role="dialog">
                             <div class="modal-dialog" role="document">
