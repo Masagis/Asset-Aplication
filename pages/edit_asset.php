@@ -21,7 +21,7 @@
         hrg_perolehan = '$hrg_perolehan',
         umur_ekonomis = '$umur_ekonomis',
         nilai_sisa = '$nilai_sisa'
-         WHERE id_asset=$id");
+        WHERE id_asset=$id");
 
 
 

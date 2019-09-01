@@ -43,7 +43,7 @@ include_once("../config/config.php");
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="<?php echo $base_url ?>assets/img/user.jpg" alt=""></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="login.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
+                                    <a class="dropdown-item" href="index.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -147,6 +147,12 @@ include_once("../config/config.php");
                                                         <td>
                                                             <form method='post' action='".$base_url."/pages/detail_penyusutan.php'>
                                                             <input type='submit' name='detail_susut' value='Lihat detail'/>
+                                                            <input type='hidden' name='id' value=".$row['id_penyusutan'].">
+                                                            <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
+                                                            </form>
+
+                                                            <form method='post' action='".$base_url."./controller/download.php'>
+                                                            <input type='submit' name='detail_susut' value='Cetak' taret='_blank'>
                                                             <input type='hidden' name='id' value=".$row['id_penyusutan'].">
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
                                                             </form>

@@ -44,7 +44,7 @@ include_once("../config/config.php");
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="<?php echo $base_url ?>assets/img/user.jpg" alt=""></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="login.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
+                                    <a class="dropdown-item" href="index.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -116,11 +116,13 @@ include_once("../config/config.php");
                                     
                                     <div class="card-body">
                                         <div class="text-right">
-                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' "><i class="fa fa-plus-square" aria-hidden="true"></i>
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset'><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah
                                             </button>
                                         </div>
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
+                                            <ul></ul>
+                                            
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
@@ -154,7 +156,11 @@ include_once("../config/config.php");
                                                         <td>
                                                         <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
                                                         </button>
-                                                        <button type='button' name ='hapus' class='btn btn-danger'><i class='ik ik-trash-2'></i></i></button>
+
+                                                        <form method='post' action='".$base_url."controller/delete_asset.php'>
+                                                        <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>
+                                                        <input type='hidden' name='id' value=".$row['id_asset']."></button>
+                                                            </form>
                                                     </td>
                                                     </tr>";
                                                     }
@@ -162,7 +168,7 @@ include_once("../config/config.php");
                                             ?>
                                         </tbody>
                                     </table>
-                                        </div>
+                                        </li>
                                     </div>
                                 </div>
 
@@ -247,13 +253,12 @@ include_once("../config/config.php");
 
                                                 </div>
 
-                                                 <button class="btn btn-primary" type="submit">Tambah</button>
+                                                <button class="btn btn-primary" type="submit">Tambah</button>
 
                                             </form>
 
                                         </div>
 
-                                          
 
                                     </form>
                                     </div>
@@ -307,11 +312,11 @@ include_once("../config/config.php");
 
                                 });
 
-                             });
+                            });
 
                         });
 
-                      </script>
+                    </script>
 
                 <footer class="footer">
                     <div class="w-100 clearfix">
