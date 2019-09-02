@@ -3,7 +3,7 @@
 include_once("../config/config.php");
 require('../Cetakpdf/fpdf.php');
 $id_penyusutan = $_POST['id'];
-$tahun = $_POST['umur_ekonomis'];
+$tahun = $_POST['umur'];
 
 
 $pdf = new FPDF('L','mm','A4');	//L = lanscape P= potrait		
@@ -36,19 +36,30 @@ $pdf->Cell(32,6,'Kategori',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
-$cetak = mysqli_query($mysqli, "SELECT * FROM tb_penyusutan");
-while ($row = mysqli_fetch_array($cetak)){
-    $pdf->Cell(10,6, $no , 1, 0, 'C');
-	$pdf->Cell(24,6, $row['id_penyusutan'],1, 0, 'C');
-	$pdf->Cell(25,6, $row['nama_penyusutan'],1, 0, 'C');
-	$pdf->Cell(37,6, $row['tgl_perolehan'],1, 0, 'C');
-	$pdf->Cell(36,6, $row['hrg_perolehan'], 1, 0,'C');
-	$pdf->Cell(36,6, $row['umur_ekonomis'],1, 0, 'C');
-	$pdf->Cell(25,6, $row['nilai_sisa'], 1, 0,'C');
-	$pdf->Cell(32,6, $row['nilai_susut'], 1, 0,'C');
-	$pdf->Cell(32,6, $row['id_kategori'], 1, 1,'C');
-	$no++;
-}	
+
+$nilai_susut = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori WHERE id_asset = '$id_penyusutan'");
+                                                
+if($nilai_susut && isset($_POST['id'])){
+while($row = mysqli_fetch_array($nilai_susut))
+	{
+	$nilai = ($row['hrg_perolehan'] - $row['nilai_sisa']) / $tahun;
+	$susut = $row['hrg_perolehan'];
+		for($i = 1; $i <= $tahun; $i++){
+		$susut = $susut - $nilai;
+		$pdf->Cell(10,6, $i , 1, 0, 'C');
+		$pdf->Cell(24,6, $row['id_asset'],1, 0, 'C');
+		$pdf->Cell(25,6, $row['nama_asset'],1, 0, 'C');
+		$pdf->Cell(37,6, $row['tgl_perolehan'],1, 0, 'C');
+		$pdf->Cell(36,6, $row['hrg_perolehan'], 1, 0,'C');
+		$pdf->Cell(36,6, $i,1, 0, 'C');
+		$pdf->Cell(25,6, $row['nilai_sisa'], 1, 0,'C');
+		$pdf->Cell(32,6, $susut, 1, 0,'C');
+		$pdf->Cell(32,6, $row['nm_katagori'], 1, 1,'C');
+		}
+	}
+}
+
+	
 
 // Memberikan space
 $pdf->Cell(169,12,'',0,1);

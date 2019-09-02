@@ -121,9 +121,16 @@ $tahun = $_POST['umur_ekonomis'];
                                             <!-- <button href='../controller/download.php' type='button' class='btn btn-primary'><i class="fa fa-plus-square"></i>Cetak Laporan
                                             </button> -->
                                             <form method='post' action='../controller/download.php'>
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' taret='_blank' class='btn-primary'>
-                                                            <input type='hidden' name='id' value=".$row['id_asset'].">
-                                                            <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
+                                                            
+                                                            <?php 
+                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = '$id_penyusutan'") ?>
+                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
+                                                            
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target='_blank' class='btn-primary'>
+                                                            <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
+                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>">
+                                                       <?php } ?>
+                                                            
                                                             </form>
                                         </div>
                                         <div class="dt-responsive">
