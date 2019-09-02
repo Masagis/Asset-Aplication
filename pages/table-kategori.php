@@ -117,12 +117,9 @@ include_once("../config/config.php");
                                     </div>
                                     
                                     <div class="card-body">
-
                                         <div class="text-center"> 
                                             <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_kategori' "><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Kategori
-
                                             </button>
-
                                         </div>
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                     <ul></ul>
@@ -149,7 +146,7 @@ include_once("../config/config.php");
                                                             <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i>
                                                             </button>
                                                             
-                                                                <button type'button' class='btn btn-alret' name='hapus'><i class='ik ik-trash-2'></i>
+                                                                <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>
                                                                 <input type='hidden' name='id' value=".$row['id_kategori']."></button>
                                                             </form>
                                                         </td>

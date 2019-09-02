@@ -108,9 +108,8 @@ include_once("../config/config.php");
                                                     $data[] = $row;
                                                 }
                                                 $count = count($data);
-                                             ?>
+                                            ?>
                                             <h2><?php echo $count; ?></h2>
-                                                       
                                         </div>
                                     <div class="icon">
                                         <i class="ik ik-award"></i>
@@ -137,7 +136,7 @@ include_once("../config/config.php");
                                                     $data[] = $row;
                                                 }
                                                 $count = count($data);
-                                             ?>
+                                            ?>
                                             <h2><?php echo $count; ?></h2>
                                             </div>
                                             <div class="icon">
@@ -147,7 +146,7 @@ include_once("../config/config.php");
                                         <small class="text-small mt-10 d-block">Jumlah data Aset</small>
                                     </div>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -156,8 +155,17 @@ include_once("../config/config.php");
                                     <div class="widget-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="state">
-                                                <h6>Penyusunan</h6>
-                                                <h2>410</h2>
+                                                <h6>Penyusutan</h6>
+                                                <?php 
+                                                $result = mysqli_query($mysqli,"SELECT * FROM tb_penyusutan") ?>
+
+                                                <?php $data = array();
+                                                    while (($row =mysqli_fetch_array($result)) != null) {
+                                                        $data[] = $row;
+                                                    }
+                                                    $count = count($data);
+                                                    ?>
+                                                <h2><?php echo $count; ?></h2>
                                             </div>
                                             <div class="icon">
                                                 <i class="ik ik-calendar"></i>
@@ -166,26 +174,7 @@ include_once("../config/config.php");
                                         <small class="text-small mt-10 d-block">Jumlah data penyusutan</small>
                                     </div>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="widget">
-                                    <div class="widget-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="state">
-                                                <h6>Laporan</h6>
-                                                <h2>41,410</h2>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="ik ik-message-square"></i>
-                                            </div>
-                                        </div>
-                                        <small class="text-small mt-10 d-block">Total Laporan</small>
-                                    </div>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                                     </div>
                                 </div>
                             </div>

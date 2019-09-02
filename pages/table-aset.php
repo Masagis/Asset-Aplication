@@ -158,7 +158,7 @@ include_once("../config/config.php");
                                                         <form method='post' action='".$base_url."controller/delete_asset.php'>
                                                         <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
                                                         </button>
-                                                        <button type'button' class='btn btn-alret' name='hapus'><i class='ik ik-trash-2'></i>
+                                                        <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>
                                                         <input type='hidden' name='id' value=".$row['id_asset']."></button>
                                                         </form>
                                                     </td>

@@ -117,8 +117,18 @@ $tahun = $_POST['umur_ekonomis'];
                                         <h3>Detail Penyusutan</h3>
                                     </div>
                                     <div class="card-body">
+                                        <div class="text-center"> 
+                                            <!-- <button href='../controller/download.php' type='button' class='btn btn-primary'><i class="fa fa-plus-square"></i>Cetak Laporan
+                                            </button> -->
+                                            <form method='post' action='../controller/download.php'>
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' taret='_blank' class='btn-primary'>
+                                                            <input type='hidden' name='id' value=".$row['id_asset'].">
+                                                            <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
+                                                            </form>
+                                        </div>
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
+                                            <ul></ul>
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
