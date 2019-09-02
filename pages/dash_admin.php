@@ -100,7 +100,17 @@ include_once("../config/config.php");
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="state">
                                         <h6>Kategori</h6>
-                                        <h2>1,410</h2>
+                                            <?php 
+                                            $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori") ?>
+
+                                            <?php $data = array();
+                                                while (($row =mysqli_fetch_array($result)) != null) {
+                                                    $data[] = $row;
+                                                }
+                                                $count = count($data);
+                                             ?>
+                                            <h2><?php echo $count; ?></h2>
+                                                       
                                         </div>
                                     <div class="icon">
                                         <i class="ik ik-award"></i>
@@ -119,7 +129,16 @@ include_once("../config/config.php");
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="state">
                                                 <h6>Aset</h6>
-                                                <h2>41,410</h2>
+                                                <?php 
+                                            $result = mysqli_query($mysqli,"SELECT * FROM tb_asset") ?>
+
+                                            <?php $data = array();
+                                                while (($row =mysqli_fetch_array($result)) != null) {
+                                                    $data[] = $row;
+                                                }
+                                                $count = count($data);
+                                             ?>
+                                            <h2><?php echo $count; ?></h2>
                                             </div>
                                             <div class="icon">
                                                 <i class="ik ik-thumbs-up"></i>
