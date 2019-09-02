@@ -64,7 +64,7 @@ include_once("../config/config.php");
                     <div class="sidebar-content">
                         <div class="nav-container">
                             <nav id="main-menu-navigation" class="navigation-main">
-                                <div class="nav-item active">
+                                <div class="nav-item">
                                     <a href="dash_admin.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-item">
@@ -73,7 +73,7 @@ include_once("../config/config.php");
                                 <div class="nav-item">
                                     <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
                                 </div>
-                                <div class="nav-item">
+                                <div class="nav-item active">
                                     <a href="table-penyusutan.php"><i class="ik ik-credit-card"></i><span>Penyusutan</span></a>
                                 </div>
                                 <!-- <div class="nav-item">
@@ -118,10 +118,10 @@ include_once("../config/config.php");
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Id Penyusutan</th>
                                             <th class="text-center">Nama Aset</th>
+                                            <th class="text-center">Qty</th>
                                             <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Hrg Perolehan</th>
+                                            <th class="text-center">Harga Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Nilai Susut</th>
@@ -131,29 +131,29 @@ include_once("../config/config.php");
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $kategori = mysqli_query($mysqli,"SELECT tb_penyusutan.id_penyusutan,tb_asset.nama_asset, tb_asset.tgl_perolehan,tb_asset.hrg_perolehan,tb_asset.umur_ekonomis,tb_asset.nilai_sisa,tb_penyusutan.total_penyusutan FROM tb_penyusutan INNER JOIN tb_asset ON tb_penyusutan.id_penyusutan = tb_asset.id_asset");
+                                                $aset = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori");
                                                 $no = 1;
-                                                if($kategori){
-                                                    while($row = mysqli_fetch_array($kategori))
+                                                if($aset){
+                                                    while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
                                                         <td>".$no++."</td>
-                                                        <td>".$row['id_penyusutan']."</td>
                                                         <td>".$row['nama_asset']."</td>
+                                                        <td>".$row['qty']."</td>
                                                         <td>".$row['tgl_perolehan']."</td>
                                                         <td>".$row['hrg_perolehan']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>
                                                             <form method='post' action='".$base_url."/pages/detail_penyusutan.php'>
-                                                            <input type='submit' name='detail_susut' value='Lihat detail'/>
-                                                            <input type='hidden' name='id' value=".$row['id_penyusutan'].">
+                                                            <input class='btn-primary' type='submit' name='detail_susut' value='Lihat detail'/>
+                                                            <input type='hidden' name='id' value=".$row['id_asset'].">
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
                                                             </form>
 
                                                             <form method='post' action='".$base_url."./controller/download.php'>
                                                             <input type='submit' name='detail_susut' value='Cetak' taret='_blank'>
-                                                            <input type='hidden' name='id' value=".$row['id_penyusutan'].">
+                                                            <input type='hidden' name='id' value=".$row['id_asset'].">
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
                                                             </form>
                                                         </td>

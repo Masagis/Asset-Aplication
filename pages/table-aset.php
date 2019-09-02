@@ -65,13 +65,13 @@ include_once("../config/config.php");
                     <div class="sidebar-content">
                         <div class="nav-container">
                             <nav id="main-menu-navigation" class="navigation-main">
-                                <div class="nav-item active">
+                                <div class="nav-item">
                                     <a href="dash_admin.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="table-kategori.php"><i class="ik ik-inbox"></i><span>Kategori</span></a>
                                 </div>
-                                <div class="nav-item">
+                                <div class="nav-item active">
                                     <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
                                 </div>
                                 <div class="nav-item">
@@ -127,7 +127,6 @@ include_once("../config/config.php");
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Id Aset</th>
                                             <th class="text-center">Nama Aset</th>
                                             <th class="text-center">Qty</th>
                                             <th class="text-center">Tgl Perolehan</th>
@@ -148,7 +147,6 @@ include_once("../config/config.php");
                                                     {
                                                         echo "<tr>
                                                         <td>".$no++."</td>
-                                                        <td>".$row['id_asset']."</td>
                                                         <td>".$row['nama_asset']."</td>
                                                         <td>".$row['qty']."</td>
                                                         <td>".$row['tgl_perolehan']."</td>
@@ -157,16 +155,12 @@ include_once("../config/config.php");
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>".$row['nm_katagori']."</td>
                                                         <td>
-                                                        <form>
+                                                        <form method='post' action='".$base_url."controller/delete_asset.php'>
                                                         <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
                                                         </button>
-
-                                                        <form method='post' action='".$base_url."controller/delete_asset.php'>
                                                         <button type'button' class='btn btn-alret' name='hapus'><i class='ik ik-trash-2'></i>
                                                         <input type='hidden' name='id' value=".$row['id_asset']."></button>
                                                         </form>
-                                                        </form>
-
                                                     </td>
                                                     </tr>";
                                                     }
