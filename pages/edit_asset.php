@@ -29,7 +29,7 @@
 
         //jika  berhasil tampil ini
 
-        header("location: ../pages/table-asset.php"); 
+        header("location: ../pages/table-aset.php"); 
 
     } else {
 

@@ -115,8 +115,9 @@ include_once("../config/config.php");
                                     </div>
                                     
                                     <div class="card-body">
-                                        <div class="text-right">
-                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset'><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah
+
+                                        <div class="text-center">
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' "><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Asset
                                             </button>
                                         </div>
                                         <div class="dt-responsive">
@@ -133,6 +134,7 @@ include_once("../config/config.php");
                                             <th class="text-center">Harga Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
+                                            <th class="text-center">Kategori</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                         </thead>
@@ -153,14 +155,18 @@ include_once("../config/config.php");
                                                         <td>".$row['hrg_perolehan']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
+                                                        <td>".$row['nm_katagori']."</td>
                                                         <td>
+                                                        <form>
                                                         <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
                                                         </button>
 
                                                         <form method='post' action='".$base_url."controller/delete_asset.php'>
-                                                        <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>
+                                                        <button type'button' class='btn btn-alret' name='hapus'><i class='ik ik-trash-2'></i>
                                                         <input type='hidden' name='id' value=".$row['id_asset']."></button>
-                                                            </form>
+                                                        </form>
+                                                        </form>
+
                                                     </td>
                                                     </tr>";
                                                     }
@@ -246,9 +252,11 @@ include_once("../config/config.php");
                                                     <label>Kategori</label>
 
                                                     <select name="kategori" class="form-control" required>
-                                                        <option value="">---- pilih ----</option>
-                                                        <option value="1" > 1 </option>
-                                                        <option value="2" > 2 </option>
+                                                        <?php 
+                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
+                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
+                                                            <option value="<?php echo $data['id_kategori']; ?>"><?php echo $data['nm_katagori']; ?></option>
+                                                       <?php } ?>
                                                     </select>
 
                                                 </div>
