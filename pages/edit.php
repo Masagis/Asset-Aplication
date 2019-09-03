@@ -7,7 +7,7 @@
     $id = $_POST['id_kategori'];
 
     $kategori = $_POST['nama'];
-    $sql = mysqli_query($mysqli,"UPDATE tb_kategori SET  nm_katagori = '$kategori' WHERE id_kategori=$id");
+    $sql = mysqli_query($mysqli,"UPDATE tb_kategori SET  nm_katagori = '$kategori' WHERE id_kategori='$id'");
 
 
 

@@ -117,7 +117,7 @@ include_once("../config/config.php");
                                     <div class="card-body">
 
                                         <div class="text-center">
-                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' "><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Asset
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' ><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Asset
                                             </button>
                                         </div>
                                         <div class="dt-responsive">
@@ -166,9 +166,10 @@ include_once("../config/config.php");
                                             ?>
                                         </tbody>
                                     </table>
-                                        </li>
-                                    </div>
-                                </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
 
                                 <!-- Language - Comma Decimal Place table end -->
                             </div>
@@ -248,7 +249,7 @@ include_once("../config/config.php");
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
                                                         <?php while ($data = mysqli_fetch_assoc($result)) {?>
                                                             <option value="<?php echo $data['id_kategori']; ?>"><?php echo $data['nm_katagori']; ?></option>
-                                                       <?php } ?>
+                                                        <?php } ?>
                                                     </select>
 
                                                 </div>
@@ -320,7 +321,7 @@ include_once("../config/config.php");
 
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 </span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 D.A.M</span>
                     </div>
                 </footer>
             </div>

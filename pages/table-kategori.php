@@ -118,7 +118,7 @@ include_once("../config/config.php");
                                     
                                     <div class="card-body">
                                         <div class="text-center"> 
-                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_kategori' "><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Kategori
+                                            <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_kategori'><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Kategori
                                             </button>
                                         </div>
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
@@ -247,18 +247,16 @@ include_once("../config/config.php");
 
                                 });
 
-                             });
+                            });
 
                         });
 
-                      </script>
-
-                      
+                    </script>
 
 
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019</span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 D.A.M</span>
                     </div>
                 </footer>
             </div>

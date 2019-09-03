@@ -24,14 +24,14 @@ $pdf->Cell(169,4,'',0,1,'C');
 $pdf->Cell(100,8,'',0,2);
 //
 $pdf->SetFont('Times','B',12,'C');
-$pdf->Cell(10,6,'No',1,0,'C');
-$pdf->Cell(24,6,'ID Susut',1,0,'C');
-$pdf->Cell(25,6,'Nama Aset',1,0,'C');
-$pdf->Cell(37,6,'Tanggal Perolehan',1,0,'C');
-$pdf->Cell(36,6,'Harga Perolehan',1,0,'C');
-$pdf->Cell(36,6,'Umur Ekonomis',1,0,'C');
-$pdf->Cell(25,6,'Nilai Sisa',1,0,'C');
-$pdf->Cell(32,6,'Penyusutan',1,1,'C');
+$pdf->Cell(10,8,'No',1,0,'C');
+$pdf->Cell(25,8,'ID Susut',1,0,'C');
+$pdf->Cell(40,8,'Nama Aset',1,0,'C');
+$pdf->Cell(40,8,'Tanggal Perolehan',1,0,'C');
+$pdf->Cell(38,8,'Harga Perolehan',1,0,'C');
+$pdf->Cell(38,8,'Umur Ekonomis',1,0,'C');
+$pdf->Cell(28,8,'Nilai Sisa',1,0,'C');
+$pdf->Cell(35,8,'Penyusutan',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
@@ -45,14 +45,14 @@ while($row = mysqli_fetch_array($nilai_susut))
 	$susut = $row['hrg_perolehan'];
 		for($i = 1; $i <= $tahun; $i++){
 		$susut = $susut - $nilai;
-		$pdf->Cell(10,6, $i , 1, 0, 'C');
-		$pdf->Cell(24,6, $row['id_asset'],1, 0, 'C');
-		$pdf->Cell(25,6, $row['nama_asset'],1, 0, 'C');
-		$pdf->Cell(37,6, $row['tgl_perolehan'],1, 0, 'C');
-		$pdf->Cell(36,6, $row['hrg_perolehan'], 1, 0,'C');
-		$pdf->Cell(36,6, $i,1, 0, 'C');
-		$pdf->Cell(25,6, $row['nilai_sisa'], 1, 0,'C');
-		$pdf->Cell(32,6, $susut, 1, 1,'C');
+		$pdf->Cell(10,8, $i , 1, 0, 'C');
+		$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
+		$pdf->Cell(40,8, $row['nama_asset'],1, 0, 'C');
+		$pdf->Cell(40,8, $row['tgl_perolehan'],1, 0, 'C');
+		$pdf->Cell(38,8, $row['hrg_perolehan'], 1, 0,'C');
+		$pdf->Cell(38,8, $i,1, 0, 'C');
+		$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
+		$pdf->Cell(35,8, $susut, 1, 1,'C');
 		}
 	}
 }

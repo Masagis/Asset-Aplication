@@ -126,12 +126,13 @@ $tahun = $_POST['umur_ekonomis'];
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = '$id_penyusutan'") ?>
                                                         <?php while ($data = mysqli_fetch_assoc($result)) {?>
                                                             
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target='_blank' class='btn-primary'>
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target='_blank' class='btn btn-primary'>
                                                             <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
                                                             <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>">
-                                                       <?php } ?>
-                                                            
-                                                            </form>
+                                                        <?php 
+                                                    } 
+                                                    ?>
+                                            </form>
                                         </div>
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
@@ -205,7 +206,7 @@ $tahun = $_POST['umur_ekonomis'];
 
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 </span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 D.A.M</span>
                     </div>
                 </footer>
             </div>
