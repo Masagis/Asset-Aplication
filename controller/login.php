@@ -17,7 +17,7 @@ if(!empty($data)){ // Jika tidak sama dengan empty (kosong)
   
   setcookie("message","delete",time()-1); // Kita delete cookie message
   if ($_SESSION['level'] == 1){
-    header("location: ../dash_admin.php"); // Kita redirect ke halaman welcome.php
+    header("location: ../pages/dash_admin.php"); // Kita redirect ke halaman welcome.php
   }else {
     header("location: ../index.php"); // Kita redirect ke halaman welcome.php
   }

@@ -157,7 +157,7 @@ include_once("../config/config.php");
                                             <div class="state">
                                                 <h6>Penyusutan</h6>
                                                 <?php 
-                                                $result = mysqli_query($mysqli,"SELECT * FROM tb_penyusutan") ?>
+                                                $result = mysqli_query($mysqli,"SELECT * FROM tb_asset") ?>
 
                                                 <?php $data = array();
                                                     while (($row =mysqli_fetch_array($result)) != null) {
