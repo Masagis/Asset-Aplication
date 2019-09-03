@@ -6,7 +6,7 @@
 
         $id = $_POST['idx'];      
 
-        $sql = mysqli_query($mysqli,"SELECT * FROM tb_kategori WHERE id_kategori = $id");
+        $sql = mysqli_query($mysqli,"SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
 
         while ($result = mysqli_fetch_array($sql)){
 

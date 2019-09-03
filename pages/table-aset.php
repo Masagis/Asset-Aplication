@@ -126,14 +126,13 @@ include_once("../config/config.php");
                                             
                                         <thead>
                                         <tr>
-                                            <th class="text-center">No</th>
+                                            <th class="text-center">Id Asset</th>
                                             <th class="text-center">Nama Aset</th>
                                             <th class="text-center">Qty</th>
                                             <th class="text-center">Tgl Perolehan</th>
                                             <th class="text-center">Harga Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
-                                            <th class="text-center">Kategori</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                         </thead>
@@ -146,14 +145,13 @@ include_once("../config/config.php");
                                                     while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
-                                                        <td>".$no++."</td>
+                                                        <td>".$row['id_asset']."</td>
                                                         <td>".$row['nama_asset']."</td>
                                                         <td>".$row['qty']."</td>
                                                         <td>".$row['tgl_perolehan']."</td>
                                                         <td>".$row['hrg_perolehan']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
-                                                        <td>".$row['nm_katagori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_asset.php'>
                                                         <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>

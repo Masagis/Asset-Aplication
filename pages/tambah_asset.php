@@ -10,8 +10,22 @@
     $umur_ekonomis = $_POST['umur_ekonomis'];
     $nilai_sisa = $_POST['nilai_sisa'];
     $kategori = $_POST['kategori'];
-    $sql = mysqli_query($mysqli,"INSERT INTO tb_asset(nama_asset,qty,tgl_perolehan,hrg_perolehan,umur_ekonomis,nilai_sisa,id_kategori) VALUES 
-        ('$nama_asset','$qty','$tgl_perolehan','$hrg_perolehan','$umur_ekonomis','$nilai_sisa','$kategori')");
+
+    $cari_kode = mysqli_query($mysqli, "SELECT max(id_asset) as kode from tb_asset");
+    $cari_kode = mysqli_fetch_array($cari_kode);
+    $kode=substr($cari_kode['kode'],5 ,7);
+    $tambah = $kode+1;
+
+    if ($tambah<10) {
+        $id_asset=$kategori."-00".$tambah;
+    }elseif ($tambah<100) {
+        $id_asset=$kategori."-0".$tambah;
+    }else{
+        $id_asset=$kategori."-".$tambah;
+    }
+
+    $sql = mysqli_query($mysqli,"INSERT INTO tb_asset(id_asset,nama_asset,qty,tgl_perolehan,hrg_perolehan,umur_ekonomis,nilai_sisa,id_kategori) VALUES 
+    ('$id_asset','$nama_asset','$qty','$tgl_perolehan','$hrg_perolehan','$umur_ekonomis','$nilai_sisa','$kategori')");
 
     if ($sql) {
 

@@ -6,7 +6,7 @@
 
         $id = $_POST['idx'];      
 
-        $sql = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = $id");
+        $sql = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = '$id'");
 
         while ($result = mysqli_fetch_array($sql)){
 

@@ -125,7 +125,7 @@ include_once("../config/config.php");
                                     <ul></ul>
                                         <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>ID Kategori</th>
                                             <th>Nama Kategori</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -139,7 +139,7 @@ include_once("../config/config.php");
                                                     while($row = mysqli_fetch_array($kategori))
                                                     {
                                                         echo "<tr>
-                                                        <td>".$no++."</td>
+                                                        <td>".$row['id_kategori']."</td>
                                                         <td>".$row['nm_katagori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_kategori.php'>
@@ -174,12 +174,19 @@ include_once("../config/config.php");
                                     </div>
                                     <div class="modal-body mx-3">
                                         <form action="tambah_kategori.php" method="post">
+                                        <div class="form-group">
+
+                                            <label>Id Kategori</label>
+
+                                            <input type="text" class="form-control" name="id" placeholder="Masukan Id Kategori">
+
+                                        </div>
 
                                         <div class="form-group">
 
                                             <label>Nama Kategori</label>
 
-                                            <input type="text" class="form-control" name="nama" placeholder="Masukan nama kategori">
+                                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kategori">
 
                                         </div>
 

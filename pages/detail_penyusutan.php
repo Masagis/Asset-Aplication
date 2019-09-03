@@ -139,6 +139,7 @@ $tahun = $_POST['umur_ekonomis'];
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
+                                            <th class="text-center">Id Asset</th>
                                             <th class="text-center">Nama Aset</th>
                                             <th class="text-center">Qty</th>
                                             <th class="text-center">Tgl Perolehan</th>
@@ -162,7 +163,7 @@ $tahun = $_POST['umur_ekonomis'];
                                                         $susut = $row['hrg_perolehan'];
                                                         for($i = 1; $i <= $tahun; $i++){
                                                             $susut = $susut - $nilai;
-                                                            $id = $row['id_asset'] + 1;
+                                                            $id = $row['id_asset'];
                                                             $nama_penusutan = $row['nama_asset'];
                                                             $qty = $row['qty'];
                                                             $tgl_perolehan = $row['tgl_perolehan'];
@@ -174,6 +175,7 @@ $tahun = $_POST['umur_ekonomis'];
                                                                 ('$id','$nama_penusutan','$qty','$tgl_perolehan','$hrg_perolehan','$umur_ekonomis','$nilai_sisa','$susut','$kategori')");
                                                             echo "<tr>
                                                             <td>".$no++."</td>
+                                                            <td>".$row['id_asset']."</td>
                                                             <td>".$row['nama_asset']."</td>
                                                             <td>".$row['qty']."</td>
                                                             <td>".$row['tgl_perolehan']."</td>

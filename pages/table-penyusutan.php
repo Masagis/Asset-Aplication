@@ -146,7 +146,7 @@ include_once("../config/config.php");
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>
                                                             <form method='post' action='".$base_url."pages/detail_penyusutan.php'>
-                                                            <input class='btn-primary' type='submit' name='detail_susut' value='Lihat detail'/>
+                                                            <input class='btn btn-primary' type='submit' name='detail_susut' value='Lihat detail'/>
                                                             <input type='hidden' name='id' value=".$row['id_asset'].">
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
                                                             </form>
