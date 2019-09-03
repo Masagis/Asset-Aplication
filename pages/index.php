@@ -29,17 +29,7 @@ include_once("../config/config.php");
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan'] == "gagal"){
-			echo "Login gagal! username dan password salah!";
-		}else if($_GET['pesan'] == "logout"){
-			echo "Anda telah berhasil logout";
-		}else if($_GET['pesan'] == "belum_login"){
-			echo "Anda harus login untuk mengakses halaman admin";
-		}
-	}
-	?>
+        
 
         <div class="auth-wrapper">
             <div class="container-fluid h-100">
@@ -52,7 +42,7 @@ include_once("../config/config.php");
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <h3 class="text-center" >Sign In to System Assets</h3>
-                            <form method="post" action="dash_admin.php">
+                            <form method="post" action=<?php echo $base_url ?>controller/login.php>
                                 <div class="form-group">
                                     <input name="email"type="text" class="form-control" placeholder="Email" required="" >
                                     <i class="ik ik-user"></i>
