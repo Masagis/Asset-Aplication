@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2019 at 04:02 PM
+-- Generation Time: Sep 03, 2019 at 02:40 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -25,48 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_susut`
---
-
-CREATE TABLE `detail_susut` (
-  `id_detail` int(4) NOT NULL,
-  `id_asset` varchar(7) NOT NULL,
-  `id_penyusutan` varchar(7) NOT NULL,
-  `jumlah_penyusutan` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detail_susut`
---
-
-INSERT INTO `detail_susut` (`id_detail`, `id_asset`, `id_penyusutan`, `jumlah_penyusutan`) VALUES
-(1, '3', '1', 900000000);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_asset`
 --
 
 CREATE TABLE `tb_asset` (
-  `id_asset` varchar(7) NOT NULL,
+  `id_asset` varchar(18) NOT NULL,
   `nama_asset` varchar(25) NOT NULL,
   `qty` int(12) NOT NULL,
   `tgl_perolehan` date NOT NULL,
   `hrg_perolehan` int(12) NOT NULL,
   `umur_ekonomis` int(12) NOT NULL,
   `nilai_sisa` int(12) NOT NULL,
-  `id_kategori` varchar(7) NOT NULL
+  `nilai_susut` int(128) NOT NULL,
+  `id_kategori` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_asset`
---
-
-INSERT INTO `tb_asset` (`id_asset`, `nama_asset`, `qty`, `tgl_perolehan`, `hrg_perolehan`, `umur_ekonomis`, `nilai_sisa`, `id_kategori`) VALUES
-('1', 'motor', 2, '2019-08-26', 300000, 3, 50000, '1'),
-('2', 'bajaj', 4, '2019-08-27', 20000000, 5, 2000000, '2'),
-('3', 'bajaj', 3, '2019-08-27', 30000000, 56, 2000000, '3');
 
 -- --------------------------------------------------------
 
@@ -75,18 +47,9 @@ INSERT INTO `tb_asset` (`id_asset`, `nama_asset`, `qty`, `tgl_perolehan`, `hrg_p
 --
 
 CREATE TABLE `tb_kategori` (
-  `id_kategori` varchar(5) NOT NULL,
+  `id_kategori` varchar(18) NOT NULL,
   `nm_katagori` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_kategori`
---
-
-INSERT INTO `tb_kategori` (`id_kategori`, `nm_katagori`) VALUES
-('1', 'coba'),
-('2', 'coba 2'),
-('3', 'coba 3');
 
 -- --------------------------------------------------------
 
@@ -95,17 +58,16 @@ INSERT INTO `tb_kategori` (`id_kategori`, `nm_katagori`) VALUES
 --
 
 CREATE TABLE `tb_penyusutan` (
-  `id_penyusutan` varchar(7) NOT NULL,
-  `tgl_penyusutan` date NOT NULL,
-  `total_penyusutan` int(12) NOT NULL
+  `id_penyusutan` varchar(64) NOT NULL,
+  `nama_penyusutan` varchar(128) NOT NULL,
+  `qty` int(12) NOT NULL,
+  `tgl_perolehan` date NOT NULL,
+  `hrg_perolehan` int(12) NOT NULL,
+  `umur_ekonomis` int(12) NOT NULL,
+  `nilai_sisa` int(12) NOT NULL,
+  `nilai_susut` int(25) NOT NULL,
+  `id_kategori` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_penyusutan`
---
-
-INSERT INTO `tb_penyusutan` (`id_penyusutan`, `tgl_penyusutan`, `total_penyusutan`) VALUES
-('1', '2019-08-22', 600000);
 
 -- --------------------------------------------------------
 
@@ -117,7 +79,7 @@ CREATE TABLE `user` (
   `id` int(3) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `level` int(1) NOT NULL
+  `level` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -125,20 +87,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `level`) VALUES
-(1, 'admin@gmail.com', 'admin', 1),
-(2, 'pimpinan@gmail.com', 'pimpinan', 2);
+(1, 'admin@gmail.com', 'admin', 1);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `detail_susut`
---
-ALTER TABLE `detail_susut`
-  ADD PRIMARY KEY (`id_detail`),
-  ADD KEY `id_asset` (`id_asset`),
-  ADD KEY `id_penyusutan` (`id_penyusutan`);
 
 --
 -- Indexes for table `tb_asset`
@@ -170,33 +123,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `detail_susut`
---
-ALTER TABLE `detail_susut`
-  MODIFY `id_detail` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `detail_susut`
---
-ALTER TABLE `detail_susut`
-  ADD CONSTRAINT `detail_susut_ibfk_1` FOREIGN KEY (`id_asset`) REFERENCES `tb_asset` (`id_asset`),
-  ADD CONSTRAINT `detail_susut_ibfk_2` FOREIGN KEY (`id_penyusutan`) REFERENCES `tb_penyusutan` (`id_penyusutan`);
-
---
--- Constraints for table `tb_asset`
---
-ALTER TABLE `tb_asset`
-  ADD CONSTRAINT `tb_asset_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `tb_kategori` (`id_kategori`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
