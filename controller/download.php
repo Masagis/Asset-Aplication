@@ -31,8 +31,7 @@ $pdf->Cell(37,6,'Tanggal Perolehan',1,0,'C');
 $pdf->Cell(36,6,'Harga Perolehan',1,0,'C');
 $pdf->Cell(36,6,'Umur Ekonomis',1,0,'C');
 $pdf->Cell(25,6,'Nilai Sisa',1,0,'C');
-$pdf->Cell(32,6,'Penyusutan',1,0,'C');
-$pdf->Cell(32,6,'Kategori',1,1,'C');
+$pdf->Cell(32,6,'Penyusutan',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
@@ -53,8 +52,7 @@ while($row = mysqli_fetch_array($nilai_susut))
 		$pdf->Cell(36,6, $row['hrg_perolehan'], 1, 0,'C');
 		$pdf->Cell(36,6, $i,1, 0, 'C');
 		$pdf->Cell(25,6, $row['nilai_sisa'], 1, 0,'C');
-		$pdf->Cell(32,6, $susut, 1, 0,'C');
-		$pdf->Cell(32,6, $row['nm_katagori'], 1, 1,'C');
+		$pdf->Cell(32,6, $susut, 1, 1,'C');
 		}
 	}
 }
