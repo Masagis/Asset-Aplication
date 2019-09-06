@@ -127,10 +127,10 @@ include_once("../config/config.php");
                                         <thead>
                                         <tr>
                                             <th class="text-center">Id Asset</th>
-                                            <th class="text-center">Nama Aset</th>
-                                            <th class="text-center">Qty</th>
+                                            <th class="text-center">Nomor Polisi</th>
+                                            <th class="text-center">Keterangan</th>
                                             <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Perolehan</th>
+                                            <th class="text-center">Harga Baku</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Aksi</th>
@@ -139,17 +139,17 @@ include_once("../config/config.php");
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $aset = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori");
+                                                $aset = mysqli_query($mysqli,"SELECT * FROM tb_asset");
                                                 $no = 1;
                                                 if($aset){
                                                     while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
                                                         <td>".$row['id_asset']."</td>
-                                                        <td>".$row['nama_asset']."</td>
-                                                        <td>".$row['qty']."</td>
+                                                        <td>".$row['nopol']."</td>
+                                                        <td>".$row['kete_aset']."</td>
                                                         <td>".$row['tgl_perolehan']."</td>
-                                                        <td>".$row['hrg_perolehan']."</td>
+                                                        <td>".$row['hrg_baku']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>
@@ -182,7 +182,7 @@ include_once("../config/config.php");
                                 <div class="modal-content">
                                 
                                     <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Tambah Asset</h4>
+                                        <h4 class="modal-title w-100 font-weight-bold">Tambah Aset</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                                     </div>
@@ -192,75 +192,62 @@ include_once("../config/config.php");
                                         <div class="form-group">
 
                                             <form action="tambah_asset.php" method="post">
-
                                                 <div class="form-group">
-
-                                                    <label>Nama Asset</label>
-
-                                                    <input type="text" class="form-control" name="nama_asset" placeholder="Masukan nama asset">
-
-                                                </div>
-
-                                                <div class="form-group">
-
-                                                    <label>Quantity</label>
-
-                                                    <input type="text" class="form-control" name="qty" placeholder="Masukan quantity">
-
-                                                </div>
-
-                                                <div class="form-group">
-
-                                                    <label>Tanggal Perolehan</label>
-
-                                                    <input type="date" class="form-control" name="tgl_perolehan" >
-
-                                                </div>
-
-                                                <div class="form-group">
-
-                                                    <label>Harga Perolehan</label>
-
-                                                    <input type="text" class="form-control" name="hrg_perolehan" placeholder="Masukan harga perolehan">
-
-                                                </div>
-
-                                                <div class="form-group">
-
-                                                    <label>Umur Ekonomis</label>
-
-                                                    <input type="text" class="form-control" name="umur_ekonomis" placeholder="Masukan umur ekonomis">
-
-                                                </div>
-
-                                                <div class="form-group">
-
-                                                    <label>Nilai Sisa</label>
-
-                                                    <input type="text" class="form-control" name="nilai_sisa" placeholder="Masukan nilai sisa">
-
-                                                </div>
-                                                <div class="form-group">
-
                                                     <label>Kategori</label>
-
                                                     <select name="kategori" class="form-control" required>
                                                         <?php 
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
                                                         <?php while ($data = mysqli_fetch_assoc($result)) {?>
-                                                            <option value="<?php echo $data['id_kategori']; ?>"><?php echo $data['nm_katagori']; ?></option>
+                                                            <option value="<?php echo $data['id_kategori']; ?>"><?php echo $data['id_kategori']; ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                </div>
+                                                
+                                            <div class="form-group">
+                                                    <label>Nomor Polisi / Plat Kendaraan</label>
+                                                    <select name="plat" class="form-control" required>
+                                                        <?php 
+                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
+                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
+                                                            <option value="<?php echo $data['nopol']; ?>"><?php echo $data['nopol']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
 
+                                                <div class="form-group">
+                                                    <label>Keterangan</label>
+                                                    <select name="keterangan" class="form-control" required>
+                                                        <?php 
+                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
+                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
+                                                            <option value="<?php echo $data['kete_kategori']; ?>"><?php echo $data['kete_kategori']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Tanggal Perolehan</label>
+                                                    <input type="date" class="form-control" name="tgl_perolehan" >
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Harga Baku / Modal</label>
+                                                    <input type="text" class="form-control" name="hrg_baku" placeholder="Masukan harga baku atau modal">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Umur Ekonomis</label>
+                                                    <input type="text" class="form-control" name="umur_ekonomis" placeholder="Masukan umur ekonomis">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Nilai Sisa</label>
+                                                    <input type="text" class="form-control" name="nilai_sisa" placeholder="Masukan nilai sisa">
                                                 </div>
 
                                                 <button class="btn btn-primary" type="submit">Tambah</button>
-
                                             </form>
-
                                         </div>
-
-
                                     </form>
                                     </div>
                                     
@@ -274,7 +261,7 @@ include_once("../config/config.php");
                                 <div class="modal-content">
                                 
                                     <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Edit Asset</h4>
+                                        <h4 class="modal-title w-100 font-weight-bold">Edit Aset</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                                     </div>
@@ -288,35 +275,20 @@ include_once("../config/config.php");
                         </div>
 
                         <script type="text/javascript">
-
                         $(document).ready(function(){
-
                             $('#edit_asset').on('show.bs.modal', function (e) {
-
                                 var idx = $(e.relatedTarget).data('id');
-
                                 //menggunakan fungsi ajax untuk pengambilan data
-
                                 $.ajax({
-
                                     type : 'post',
-
                                     url : 'detail_asset.php',
-
                                     data :  'idx='+ idx,
-
                                     success : function(data){
-
                                     $('.hasil-data').html(data);//menampilkan data ke dalam modal
-
                                     }
-
                                 });
-
                             });
-
                         });
-
                     </script>
 
                 <footer class="footer">

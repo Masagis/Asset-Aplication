@@ -9,7 +9,7 @@ include_once("../config/config.php");
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Tabel Kategori |Admin</title>
+        <title>Tabel Kategori | Admin</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,9 +125,10 @@ include_once("../config/config.php");
                                     <ul></ul>
                                         <thead>
                                         <tr>
-                                            <th>ID Kategori</th>
-                                            <th>Nama Kategori</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center">ID Kategori</th>
+                                            <th class="text-center">Nomor Polisi</th>
+                                            <th class="text-center">Keterangan</th>
+                                            <th class="text-center">Aksi</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -140,7 +141,8 @@ include_once("../config/config.php");
                                                     {
                                                         echo "<tr>
                                                         <td>".$row['id_kategori']."</td>
-                                                        <td>".$row['nm_katagori']."</td>
+                                                        <td>".$row['nopol']."</td>
+                                                        <td>".$row['kete_kategori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_kategori.php'>
                                                             <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i>
@@ -177,17 +179,19 @@ include_once("../config/config.php");
                                         <div class="form-group">
 
                                             <label>Id Kategori</label>
-
-                                            <input type="text" class="form-control" name="id" placeholder="Masukan Id Kategori">
-
+                                                <select name='id' class="form-control select2">
+                                                    <option value="R2">R2</option>
+                                                    <option value="R4">R4</option>
+                                                    </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nomor Polisi / Plat Kendaraan</label>
+                                            <input type="text" class="form-control" name="plat" placeholder="Masukan Nomor polisi atau Plat kendaraan">
                                         </div>
 
                                         <div class="form-group">
-
-                                            <label>Nama Kategori</label>
-
-                                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kategori">
-
+                                            <label>Keterangan</label>
+                                            <input type="text" class="form-control" name="keterangan" placeholder="Masukan Keteranagan Kendaraan">
                                         </div>
 
                                         <button class="btn btn-primary" type="submit">Tambah</button>
@@ -213,8 +217,6 @@ include_once("../config/config.php");
                                     <div class="modal-body mx-3">
                                         <div class="hasil-data"></div>
                                     </div>
-                                    
-                                
                                 </div>
                             </div>
                         </div>

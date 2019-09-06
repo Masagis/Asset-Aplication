@@ -3,8 +3,9 @@
     include_once("../config/config.php");
 
     $id = $_POST['id'];
-    $kategori = $_POST['nama'];
-    $sql = mysqli_query($mysqli,"INSERT INTO tb_kategori(id_kategori, nm_katagori) VALUES ('$id','$kategori')");
+    $nopol = $_POST['plat'];
+    $keterangan= $_POST['keterangan'];
+    $sql = mysqli_query($mysqli,"INSERT INTO tb_kategori(id_kategori,nopol,kete_kategori) VALUES ('$id','$nopol','$keterangan')");
 
     if ($sql) {
 
