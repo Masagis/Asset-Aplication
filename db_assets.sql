@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2019 at 04:19 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Waktu pembuatan: 08 Sep 2019 pada 15.33
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_asset`
+-- Struktur dari tabel `tb_asset`
 --
 
 CREATE TABLE `tb_asset` (
@@ -36,22 +36,14 @@ CREATE TABLE `tb_asset` (
   `hrg_baku` int(12) NOT NULL,
   `umur_ekonomis` int(12) NOT NULL,
   `nilai_sisa` int(12) NOT NULL,
-  `nilai_susut` int(128) NOT NULL
+  `nilai_susut` int(128) NOT NULL,
+  `kategori` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_asset`
---
-
-INSERT INTO `tb_asset` (`id_asset`, `nopol`, `kete_aset`, `tgl_perolehan`, `hrg_baku`, `umur_ekonomis`, `nilai_sisa`, `nilai_susut`) VALUES
-('R2-003', 'BE 7789 MA', 'Kijangan', '2019-08-25', 23000000, 45, 2000, 0),
-('R4-001', 'be 3454 hj', 'vario M125', '2019-09-03', 23000000, 2, 200000, 0),
-('R4-002', 'BE 7789 MA', 'Kijangan', '2019-09-03', 23000000, 7, 3000000, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kategori`
+-- Struktur dari tabel `tb_kategori`
 --
 
 CREATE TABLE `tb_kategori` (
@@ -60,18 +52,10 @@ CREATE TABLE `tb_kategori` (
   `kete_kategori` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tb_kategori`
---
-
-INSERT INTO `tb_kategori` (`id_kategori`, `nopol`, `kete_kategori`) VALUES
-('R2', 'be 3454 hj', 'vario M125'),
-('R4', 'BE 7789 MA', 'Kijangan');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_penyusutan`
+-- Struktur dari tabel `tb_penyusutan`
 --
 
 CREATE TABLE `tb_penyusutan` (
@@ -86,10 +70,17 @@ CREATE TABLE `tb_penyusutan` (
   `id_kategori` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tb_penyusutan`
+--
+
+INSERT INTO `tb_penyusutan` (`id_penyusutan`, `nama_penyusutan`, `qty`, `tgl_perolehan`, `hrg_perolehan`, `umur_ekonomis`, `nilai_sisa`, `nilai_susut`, `id_kategori`) VALUES
+('', '', 0, '0000-00-00', 0, 0, 0, 16667, '');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -100,7 +91,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `level`) VALUES
@@ -111,38 +102,49 @@ INSERT INTO `user` (`id`, `email`, `password`, `level`) VALUES
 --
 
 --
--- Indexes for table `tb_asset`
+-- Indeks untuk tabel `tb_asset`
 --
 ALTER TABLE `tb_asset`
-  ADD PRIMARY KEY (`id_asset`);
+  ADD PRIMARY KEY (`id_asset`),
+  ADD KEY `kategori` (`kategori`);
 
 --
--- Indexes for table `tb_kategori`
+-- Indeks untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `tb_penyusutan`
+-- Indeks untuk tabel `tb_penyusutan`
 --
 ALTER TABLE `tb_penyusutan`
   ADD PRIMARY KEY (`id_penyusutan`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `tb_asset`
+--
+ALTER TABLE `tb_asset`
+  ADD CONSTRAINT `tb_asset_ibfk_1` FOREIGN KEY (`kategori`) REFERENCES `tb_kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
