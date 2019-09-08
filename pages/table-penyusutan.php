@@ -113,35 +113,52 @@ include_once("../config/config.php");
                                         <h3>Tabel Penyusutan</h3>
                                     </div>
                                     <div class="card-body">
+                                        <div class="text-center">
+                                            <form method='post' action='../controller/download_all.php' target="_blank" rel="nofollow">
+                                                            
+                                                            <?php 
+                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_asset ") ?>
+                                                        <?php if ($data = mysqli_fetch_assoc($result)) {?>
+                                                            <a href="../controller/download_all.php" target="_blank" rel="nofollow">
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan Seluruh Aset' target="_blank" class='btn btn-primary'>
+                                                            <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
+                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
+                                                        <?php 
+                                                    } 
+                                                    ?>
+                                            </form>
+                                        </div>
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Nama Aset</th>
-                                            <th class="text-center">Qty</th>
+                                            <th class="text-center">Id Asset</th>
+                                            <th class="text-center">Nomor Polisi</th>
+                                            <th class="text-center">Keterangan</th>
                                             <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Perolehan</th>
+                                            <th class="text-center">Harga Baku</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
-                                            <th class="text-center">Nilai Susut</th>
+                                            <th class="text-center">Aksi</th>
                                             
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $aset = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori");
+                                                $aset = mysqli_query($mysqli,"SELECT * FROM tb_asset");
                                                 $no = 1;
                                                 if($aset){
                                                     while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
                                                         <td>".$no++."</td>
-                                                        <td>".$row['nama_asset']."</td>
-                                                        <td>".$row['qty']."</td>
+                                                        <td>".$row['id_asset']."</td>
+                                                        <td>".$row['nopol']."</td>
+                                                        <td>".$row['kete_aset']."</td>
                                                         <td>".$row['tgl_perolehan']."</td>
-                                                        <td>".$row['hrg_perolehan']."</td>
+                                                        <td>".$row['hrg_baku']."</td>
                                                         <td>".$row['umur_ekonomis']."</td>
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>

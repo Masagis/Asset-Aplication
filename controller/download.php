@@ -26,31 +26,33 @@ $pdf->Cell(100,8,'',0,2);
 $pdf->SetFont('Times','B',12,'C');
 $pdf->Cell(10,8,'No',1,0,'C');
 $pdf->Cell(25,8,'ID Susut',1,0,'C');
-$pdf->Cell(40,8,'Nama Aset',1,0,'C');
-$pdf->Cell(40,8,'Tanggal Perolehan',1,0,'C');
-$pdf->Cell(38,8,'Harga Perolehan',1,0,'C');
-$pdf->Cell(38,8,'Umur Ekonomis',1,0,'C');
+$pdf->Cell(28,8,'Nomor Polisi',1,0,'C');
+$pdf->Cell(35,8,'Keterangan',1,0,'C');
+$pdf->Cell(30,8,'Tgl Perolehan',1,0,'C');
+$pdf->Cell(30,8,'Harga Baku',1,0,'C');
+$pdf->Cell(34,8,'Umur Ekonomis',1,0,'C');
 $pdf->Cell(28,8,'Nilai Sisa',1,0,'C');
-$pdf->Cell(35,8,'Penyusutan',1,1,'C');
+$pdf->Cell(35,8,'Nilai Susut',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
 
-$nilai_susut = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori WHERE id_asset = '$id_penyusutan'");
+$nilai_susut = mysqli_query($mysqli,"SELECT * FROM tb_asset  WHERE id_asset = '$id_penyusutan'");
                                                 
 if($nilai_susut && isset($_POST['id'])){
 while($row = mysqli_fetch_array($nilai_susut))
 	{
-	$nilai = ($row['hrg_perolehan'] - $row['nilai_sisa']) / $tahun;
-	$susut = $row['hrg_perolehan'];
+	$nilai = ($row['hrg_baku'] - $row['nilai_sisa']) / $tahun;
+	$susut = $row['hrg_baku'];
 		for($i = 1; $i <= $tahun; $i++){
 		$susut = $susut - $nilai;
 		$pdf->Cell(10,8, $i , 1, 0, 'C');
 		$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
-		$pdf->Cell(40,8, $row['nama_asset'],1, 0, 'C');
-		$pdf->Cell(40,8, $row['tgl_perolehan'],1, 0, 'C');
-		$pdf->Cell(38,8, $row['hrg_perolehan'], 1, 0,'C');
-		$pdf->Cell(38,8, $i,1, 0, 'C');
+		$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
+		$pdf->Cell(35,8, $row['kete_aset'], 1, 0,'C');
+		$pdf->Cell(30,8, $row['tgl_perolehan'],1, 0, 'C');
+		$pdf->Cell(30,8, $row['hrg_baku'], 1, 0,'C');
+		$pdf->Cell(34,8, $i,1, 0, 'C');
 		$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
 		$pdf->Cell(35,8, $susut, 1, 1,'C');
 		}
@@ -70,6 +72,4 @@ $pdf->Cell(50,5,'',0,1);
 // $pdf->Cell(114,7,'',0,0);$pdf->Cell(70,7,'',0,0,'L');
 	$pdf->Output();
 	$pdf->Stream(array("Attachment" => FALSE));
-
-
 ?>

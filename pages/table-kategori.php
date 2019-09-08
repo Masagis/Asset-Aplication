@@ -125,6 +125,7 @@ include_once("../config/config.php");
                                     <ul></ul>
                                         <thead>
                                         <tr>
+                                            <th class="text-center">No</th>
                                             <th class="text-center">ID Kategori</th>
                                             <th class="text-center">Nomor Polisi</th>
                                             <th class="text-center">Keterangan</th>
@@ -140,12 +141,13 @@ include_once("../config/config.php");
                                                     while($row = mysqli_fetch_array($kategori))
                                                     {
                                                         echo "<tr>
+                                                        <td>".$no++."</td>
                                                         <td>".$row['id_kategori']."</td>
                                                         <td>".$row['nopol']."</td>
                                                         <td>".$row['kete_kategori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_kategori.php'>
-                                                            <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i>
+                                                            <button type='button' class='btn btn-info' style='margin-right: 5px;' data-toggle='modal' data-target='#edit_kategori' data-id=".$row['id_kategori']."><i class='ik ik-edit'></i>
                                                             </button>
                                                             
                                                                 <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>

@@ -12,7 +12,7 @@
     $nilai_sisa = $_POST['nilai_sisa'];
     
 
-    $cari_kode = mysqli_query($mysqli, "SELECT max(id_asset) as kode from tb_asset");
+    $cari_kode = mysqli_query($mysqli, "SELECT max(id_asset) as kode from tb_asset WHERE kategori = '$kategori'");
     $cari_kode = mysqli_fetch_array($cari_kode);
     $kode=substr($cari_kode['kode'],5 ,7);
     $tambah = $kode+1;
@@ -35,8 +35,8 @@
         }
     }
 
-    $sql = mysqli_query($mysqli,"INSERT INTO tb_asset(id_asset,nopol,kete_aset,tgl_perolehan,hrg_baku,umur_ekonomis,nilai_sisa) VALUES 
-    ('$id_asset','$nopol','$kete_aset','$tgl_perolehan','$hrg_baku','$umur_ekonomis','$nilai_sisa')");
+    $sql = mysqli_query($mysqli,"INSERT INTO tb_asset(id_asset,nopol,kete_aset,tgl_perolehan,hrg_baku,umur_ekonomis,nilai_sisa,kategori) VALUES 
+    ('$id_asset','$nopol','$kete_aset','$tgl_perolehan','$hrg_baku','$umur_ekonomis','$nilai_sisa', '$kategori')");
 
     if ($sql) {
 

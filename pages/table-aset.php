@@ -126,6 +126,7 @@ include_once("../config/config.php");
                                             
                                         <thead>
                                         <tr>
+                                            <th class="text-center">No</th>
                                             <th class="text-center">Id Asset</th>
                                             <th class="text-center">Nomor Polisi</th>
                                             <th class="text-center">Keterangan</th>
@@ -145,6 +146,7 @@ include_once("../config/config.php");
                                                     while($row = mysqli_fetch_array($aset))
                                                     {
                                                         echo "<tr>
+                                                        <td>".$no++."</td>
                                                         <td>".$row['id_asset']."</td>
                                                         <td>".$row['nopol']."</td>
                                                         <td>".$row['kete_aset']."</td>
@@ -154,7 +156,7 @@ include_once("../config/config.php");
                                                         <td>".$row['nilai_sisa']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_asset.php'>
-                                                        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
+                                                        <button type='button' class='btn btn-info' style='margin-right: 5px;' data-toggle='modal' data-target='#edit_asset' data-id=".$row['id_asset']."><i class='ik ik-edit'></i></i>
                                                         </button>
                                                         <button type'button' class='btn btn-danger' name='hapus'><i class='ik ik-trash-2'></i>
                                                         <input type='hidden' name='id' value=".$row['id_asset']."></button>

@@ -41,7 +41,9 @@ $tahun = $_POST['umur_ekonomis'];
                     <div class="d-flex justify-content-between">
                         <div class="top-menu d-flex align-items-center">
                             <button type="button" class="btn-icon mobile-nav-toggle d-lg-none"><span></span></button>
-                            <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>
+                            <button type="button" id="navbar-fullscreen" class="nav-link" style="margin-right: 5px;"><i class="ik ik-maximize"></i></button>
+                            &nbsp
+                            <button  type='button' onclick="history.go(-1);" class='btn btn-danger'><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</button>
                         </div>
                         <div class="top-menu d-flex align-items-center">
                             <div class="dropdown">
@@ -117,18 +119,17 @@ $tahun = $_POST['umur_ekonomis'];
                                         <h3>Detail Penyusutan</h3>
                                     </div>
                                     <div class="card-body">
-                                        <div class="text-center"> 
-                                            <!-- <button href='../controller/download.php' type='button' class='btn btn-primary'><i class="fa fa-plus-square"></i>Cetak Laporan
-                                            </button> -->
-                                            <form method='post' action='../controller/download.php'>
+
+                                        <div class="text-center">
+                                            <form method='post' action='../controller/download.php' target="_blank" rel="nofollow">
                                                             
                                                             <?php 
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = '$id_penyusutan'") ?>
                                                         <?php while ($data = mysqli_fetch_assoc($result)) {?>
-                                                            
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target='_blank' class='btn btn-primary'>
+                                                            <a href="../controller/download.php" target="_blank" rel="nofollow">
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target="_blank" class='btn btn-primary'>
                                                             <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
-                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>">
+                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
                                                         <?php 
                                                     } 
                                                     ?>
@@ -141,12 +142,11 @@ $tahun = $_POST['umur_ekonomis'];
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="text-center">Id Asset</th>
-                                            <th class="text-center">Nama Aset</th>
-                                            <th class="text-center">Qty</th>
+                                            <th class="text-center">Nomor Polisi</th>
+                                            <th class="text-center">Keterangan</th>
                                             <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Perolehan</th>
+                                            <th class="text-center">Harga Baku</th>
                                             <th class="text-center">Umur Ekonomis</th>
-                                            <th class="text-center">Kategori</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Nilai Susut</th>
                                             
@@ -155,34 +155,23 @@ $tahun = $_POST['umur_ekonomis'];
                                         <tbody>
                                             <?php
                                                 include '../config/config.php';
-                                                $nilai_susut = mysqli_query($mysqli,"SELECT tb_asset.*, tb_kategori.nm_katagori FROM tb_asset INNER JOIN tb_kategori ON tb_asset.id_kategori = tb_kategori.id_kategori WHERE id_asset = '$id_penyusutan'");
+                                                $nilai_susut = mysqli_query($mysqli,"SELECT * FROM tb_asset  WHERE id_asset = '$id_penyusutan'");
                                                 $no = 1;
                                                 if($nilai_susut && isset($_POST['id'])){
                                                     while($row = mysqli_fetch_array($nilai_susut))
                                                     {
-                                                        $nilai = ($row['hrg_perolehan'] - $row['nilai_sisa']) / $tahun;
-                                                        $susut = $row['hrg_perolehan'];
+                                                        $nilai = ($row['hrg_baku'] - $row['nilai_sisa']) / $tahun;
+                                                        $susut = $row['hrg_baku'];
                                                         for($i = 1; $i <= $tahun; $i++){
                                                             $susut = $susut - $nilai;
-                                                            $id = $row['id_asset'];
-                                                            $nama_penusutan = $row['nama_asset'];
-                                                            $qty = $row['qty'];
-                                                            $tgl_perolehan = $row['tgl_perolehan'];
-                                                            $hrg_perolehan = $row['hrg_perolehan'];
-                                                            $umur_ekonomis = $i;
-                                                            $nilai_sisa = $row['nilai_sisa'];
-                                                            $kategori = $row['nm_katagori'];
-                                                            $sql = mysqli_query($mysqli,"INSERT INTO tb_penyusutan(id_penyusutan,nama_penyusutan,qty,tgl_perolehan,hrg_perolehan,umur_ekonomis,nilai_sisa,nilai_susut,id_kategori) VALUES 
-                                                                ('$id','$nama_penusutan','$qty','$tgl_perolehan','$hrg_perolehan','$umur_ekonomis','$nilai_sisa','$susut','$kategori')");
                                                             echo "<tr>
                                                             <td>".$no++."</td>
                                                             <td>".$row['id_asset']."</td>
-                                                            <td>".$row['nama_asset']."</td>
-                                                            <td>".$row['qty']."</td>
+                                                            <td>".$row['nopol']."</td>
+                                                            <td>".$row['kete_aset']."</td>
                                                             <td>".$row['tgl_perolehan']."</td>
-                                                            <td>".$row['hrg_perolehan']."</td>
+                                                            <td>".$row['hrg_baku']."</td>
                                                             <td>".$i."</td>
-                                                            <td>".$row['nm_katagori']."</td>
                                                             <td>".$row['nilai_sisa']."</td>
                                                             <td>".$susut."</td>
                                                             </tr>";
