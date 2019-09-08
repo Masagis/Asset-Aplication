@@ -136,17 +136,55 @@ $tahun = $_POST['umur_ekonomis'];
                                             </form>
                                         </div>
                                         <div class="dt-responsive">
+                                            <?php
+                                                include '../config/config.php';
+                                                $nilai_susut = mysqli_query($mysqli,"SELECT * FROM tb_asset  WHERE id_asset = '$id_penyusutan'");
+                                                if($row = mysqli_fetch_array($nilai_susut)){
+                                            ?>
+                                            <div class="form-horizontal">
+                                                <div class="input-group">
+                                                    <h4 >Id Asset</h4>
+                                                    <h4 style="margin-left: 105px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['id_asset']; ?>">
+                                                    </div> 
+                                                </div>
+                                                <div class="input-group">
+                                                    <h4 style="margin-right: 5px;">Nopol</h4>
+                                                    <h4 style="margin-left: 123px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['nopol']; ?>">
+                                                    </div> 
+                                                </div><div class="input-group">
+                                                    <h4 style="margin-right: 5px;">Nama Asset</h4>
+                                                    <h4 style="margin-left: 56px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['kete_aset']; ?>">
+                                                    </div> 
+                                                </div><div class="input-group">
+                                                    <h4 style="margin-right: 5px;">Tgl Perolehan</h4>
+                                                    <h4 style="margin-left: 37px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['tgl_perolehan']; ?>">
+                                                    </div> 
+                                                </div><div class="input-group">
+                                                    <h4 style="margin-right: 5px;">Harga Perolehan</h4>
+                                                    <h4 style="margin-left: 5px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['hrg_baku']; ?>">
+                                                    </div> 
+                                                </div>
+                                                   
+                                            </div>
+                                        <?php } ?>
+
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                             <ul></ul>
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Id Asset</th>
-                                            <th class="text-center">Nomor Polisi</th>
-                                            <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Baku</th>
-                                            <th class="text-center">Umur Ekonomis</th>
+                                            <th class="text-center">Penyusutan Ke</th>
+                                            <th class="text-center">Tahun Penyusutan</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Nilai Susut</th>
                                             
@@ -164,14 +202,11 @@ $tahun = $_POST['umur_ekonomis'];
                                                         $susut = $row['hrg_baku'];
                                                         for($i = 1; $i <= $tahun; $i++){
                                                             $susut = $susut - $nilai;
+                                                            $y = strtotime("$i year");
                                                             echo "<tr>
                                                             <td>".$no++."</td>
-                                                            <td>".$row['id_asset']."</td>
-                                                            <td>".$row['nopol']."</td>
-                                                            <td>".$row['kete_aset']."</td>
-                                                            <td>".$row['tgl_perolehan']."</td>
-                                                            <td>".$row['hrg_baku']."</td>
                                                             <td>".$i."</td>
+                                                            <td>".$year = date('Y', "+$y")."</td>
                                                             <td>".$row['nilai_sisa']."</td>
                                                             <td>".$susut."</td>
                                                             </tr>";
