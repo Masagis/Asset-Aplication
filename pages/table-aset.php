@@ -72,10 +72,10 @@ include_once("../config/config.php");
                                     <a href="table-kategori.php"><i class="ik ik-inbox"></i><span>Kategori</span></a>
                                 </div>
                                 <div class="nav-item active">
-                                    <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
+                                    <a href="table-aset.php"><i class="ik ik-archive"></i><span>Aset</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="table-penyusutan.php"><i class="ik ik-credit-card"></i><span>Penyusutan</span></a>
+                                    <a href="table-penyusutan.php"><i class="ik ik-box"></i><span>Penyusutan</span></a>
                                 </div>
                                 <!-- <div class="nav-item">
                                     <a href="table-laporan.php"><i class="ik ik-layout"></i><span>Laporan</span></a>
@@ -205,7 +205,7 @@ include_once("../config/config.php");
                                                     </select>
                                                 </div>
                                                 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                     <label>Nomor Polisi / Plat Kendaraan</label>
                                                     <select name="plat" class="form-control" required>
                                                         <?php 
@@ -214,6 +214,10 @@ include_once("../config/config.php");
                                                             <option value="<?php echo $data['nopol']; ?>"><?php echo $data['nopol']; ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                </div> -->
+                                                <div class="form-group">
+                                                    <label>Nomor Polisi / Plat Kendaraan</label>
+                                                    <input type="text" class="form-control" name="plat" placeholder="Masukan Nomor Polisi / Plat Kendaraan" >
                                                 </div>
 
                                                 <div class="form-group">
@@ -226,6 +230,7 @@ include_once("../config/config.php");
                                                         <?php } ?>
                                                     </select>
                                                 </div>
+                                                
 
                                                 <div class="form-group">
                                                     <label>Tanggal Perolehan</label>

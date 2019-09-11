@@ -15,10 +15,10 @@ include_once("../config/config.php");
                 <input type="text" readonly class="form-control" name="id_kategori" value="<?php echo $result['id_kategori']; ?>">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Nomor Polisi / Plat Kendaraan</label>
                 <input type="text" class="form-control" name="plat" value="<?php echo $result['nopol']; ?>">
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label>Keterangan</label>

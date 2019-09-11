@@ -71,10 +71,10 @@ include_once("../config/config.php");
                                     <a href="table-kategori.php"><i class="ik ik-inbox"></i><span>Kategori</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
+                                    <a href="table-aset.php"><i class="ik ik-archive"></i><span>Aset</span></a>
                                 </div>
                                 <div class="nav-item active">
-                                    <a href="table-penyusutan.php"><i class="ik ik-credit-card"></i><span>Penyusutan</span></a>
+                                    <a href="table-penyusutan.php"><i class="ik ik-box"></i><span>Penyusutan</span></a>
                                 </div>
                                 <!-- <div class="nav-item">
                                     <a href="table-laporan.php"><i class="ik ik-layout"></i><span>Laporan</span></a>

@@ -77,10 +77,10 @@ $tahun = $_POST['umur_ekonomis'];
                                     <a href="table-kategori.php"><i class="ik ik-inbox"></i><span>Kategori</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
+                                    <a href="table-aset.php"><i class="ik ik-archive"></i><span>Aset</span></a>
                                 </div>
                                 <div class="nav-item active">
-                                    <a href="table-penyusutan.php"><i class="ik ik-credit-card"></i><span>Penyusutan</span></a>
+                                    <a href="table-penyusutan.php"><i class="ik ik-box"></i><span>Penyusutan</span></a>
                                 </div>
                                 <!-- <div class="nav-item">
                                     <a href="table-laporan.php"><i class="ik ik-layout"></i><span>Laporan</span></a>
@@ -143,38 +143,38 @@ $tahun = $_POST['umur_ekonomis'];
                                             ?>
                                             <div class="form-horizontal">
                                                 <div class="input-group">
-                                                    <h4 >Id Asset</h4>
+                                                    <h6 style="margin-right: 5px;">ID Aset</h6>
                                                     <h4 style="margin-left: 105px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['id_asset']; ?>">
                                                     </div> 
                                                 </div>
                                                 <div class="input-group">
-                                                    <h4 style="margin-right: 5px;">Nopol</h4>
-                                                    <h4 style="margin-left: 123px; margin-right: 5px;">:</h4>
+                                                    <h6 style="margin-right: 5px;">Nomor Polisi</h6>
+                                                    <h4 style="margin-left: 65px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['nopol']; ?>">
                                                     </div> 
                                                 </div><div class="input-group">
-                                                    <h4 style="margin-right: 5px;">Nama Asset</h4>
-                                                    <h4 style="margin-left: 56px; margin-right: 5px;">:</h4>
+                                                    <h6 style="margin-right: 5px;">Keterangan</h6>
+                                                    <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['kete_aset']; ?>">
                                                     </div> 
                                                 </div><div class="input-group">
-                                                    <h4 style="margin-right: 5px;">Tgl Perolehan</h4>
-                                                    <h4 style="margin-left: 37px; margin-right: 5px;">:</h4>
+                                                    <h6 style="margin-right: 5px;">Tgl Perolehan</h6>
+                                                    <h4 style="margin-left: 59px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['tgl_perolehan']; ?>">
                                                     </div> 
                                                 </div><div class="input-group">
-                                                    <h4 style="margin-right: 5px;">Harga Perolehan</h4>
-                                                    <h4 style="margin-left: 5px; margin-right: 5px;">:</h4>
+                                                    <h6 style="margin-right: 5px;">Harga Baku</h6>
+                                                    <h4 style="margin-left: 70px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['hrg_baku']; ?>">
                                                     </div> 
                                                 </div>
-                                                   
+                                                
                                             </div>
                                         <?php } ?>
 

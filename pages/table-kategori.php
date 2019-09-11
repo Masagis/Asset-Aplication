@@ -73,10 +73,10 @@ include_once("../config/config.php");
                                     <a href="table-kategori.php"><i class="ik ik-inbox"></i><span>Kategori</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="table-aset.php"><i class="ik ik-menu"></i><span>Aset</span></a>
+                                    <a href="table-aset.php"><i class="ik ik-archive"></i><span>Aset</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="table-penyusutan.php"><i class="ik ik-credit-card"></i><span>Penyusutan</span></a>
+                                    <a href="table-penyusutan.php"><i class="ik ik-box"></i><span>Penyusutan</span></a>
                                 </div>
                                 <!-- <div class="nav-item">
                                     <a href="table-laporan.php"><i class="ik ik-layout"></i><span>Laporan</span></a>
@@ -127,7 +127,6 @@ include_once("../config/config.php");
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="text-center">ID Kategori</th>
-                                            <th class="text-center">Nomor Polisi</th>
                                             <th class="text-center">Keterangan</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
@@ -143,7 +142,6 @@ include_once("../config/config.php");
                                                         echo "<tr>
                                                         <td>".$no++."</td>
                                                         <td>".$row['id_kategori']."</td>
-                                                        <td>".$row['nopol']."</td>
                                                         <td>".$row['kete_kategori']."</td>
                                                         <td>
                                                         <form method='post' action='".$base_url."controller/delete_kategori.php'>
@@ -186,14 +184,14 @@ include_once("../config/config.php");
                                                     <option value="R4">R4</option>
                                                     </select>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label>Nomor Polisi / Plat Kendaraan</label>
                                             <input type="text" class="form-control" name="plat" placeholder="Masukan Nomor polisi atau Plat kendaraan">
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group">
                                             <label>Keterangan</label>
-                                            <input type="text" class="form-control" name="keterangan" placeholder="Masukan Keteranagan Kendaraan">
+                                            <input type="text" class="form-control" name="keterangan" placeholder="Masukan Keterangan Kendaraan">
                                         </div>
 
                                         <button class="btn btn-primary" type="submit">Tambah</button>

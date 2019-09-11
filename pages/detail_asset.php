@@ -15,7 +15,7 @@ include_once("../config/config.php");
             </div>
 
             <div class="form-group">
-                <label>Nama Aset</label>
+                <label>Nomor Polisi / Plat Kendaraan</label>
                 <input type="text" readonly class="form-control" name="plat" value="<?php echo $result['nopol']; ?>">
             </div>
 
@@ -26,7 +26,7 @@ include_once("../config/config.php");
 
             <div class="form-group">
                 <label>Tanggal Perolehan</label>
-                <input type="text" class="form-control" name="tgl_perolehan" value="<?php echo $result['tgl_perolehan']; ?>">
+                <input type="date" class="form-control" name="tgl_perolehan" value="<?php echo $result['tgl_perolehan']; ?>">
             </div>
 
             <div class="form-group">
