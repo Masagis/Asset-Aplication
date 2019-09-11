@@ -63,13 +63,13 @@ while ($data = mysqli_fetch_array($sql)) {
 
 	
 
-// Memberikan space
+// Memberikan Footer
 $pdf->Cell(169,12,'',0,1);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(234,7,'Lampung Selatan,',0,0,'R');$pdf->Cell(60,7,date('d-m-Y'),0,1);
-$pdf->Cell(237,7,'Dibuat Oleh Admin',0,1,'R');
+$pdf->Cell(25,7,'Mengetahui,',0,0,'L'); $pdf->Cell(205,7,'Lampung Selatan,',0,0,'R');$pdf->Cell(60,7,date('d-m-Y'),0,1);
+$pdf->Cell(25,7,'Pimpinan',0,0,'L'); $pdf->Cell(215,7,'Dibuat Oleh Admin',0,1,'R');
 $pdf->Cell(169,20,'',0,3);
-$pdf->Cell(203,4,'',0,0);$pdf->Cell(45,5,'(......................................)','B',0,'L');
+$pdf->Cell(45,5,'(......................................)','B',0,'L');$pdf->Cell(155,5,'',0,0);$pdf->Cell(45,5,'(......................................)','B',0,'L');
 $pdf->Cell(50,5,'',0,1);
 // $pdf->Cell(114,7,'',0,0);$pdf->Cell(70,7,'',0,0,'L');
 	$pdf->Output();
