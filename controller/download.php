@@ -18,7 +18,7 @@ $pdf->SetFont('Times','B',14);
 // $data=$this->Menu_model->getUnduh($kodemk);
    // mencetak string 
 $pdf->Cell(169,5,'',0,2);
-$pdf->Cell(80,4,'',0,0);$pdf->Cell(109,5,'KERTAS KERJA PENYUSUTAN ASET TETAP','B',0,'C');
+$pdf->Cell(93,4,'',0,0);$pdf->Cell(90,5,'LAPORAN TRANSAKSI PENYUSUTAN','B',0,'C');
 $pdf->Cell(169,4,'',0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(100,8,'',0,2);
