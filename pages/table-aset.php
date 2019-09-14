@@ -115,7 +115,6 @@ include_once("../config/config.php");
                                     </div>
                                     
                                     <div class="card-body">
-
                                         <div class="text-center">
                                             <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#tambah_asset' ><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Asset
                                             </button>
@@ -130,8 +129,8 @@ include_once("../config/config.php");
                                             <th class="text-center">Id Asset</th>
                                             <th class="text-center">Nomor Polisi</th>
                                             <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Baku</th>
+                                            <th class="text-center">Thn Perolehan</th>
+                                            <th class="text-center">Hrg Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Aksi</th>
@@ -233,7 +232,7 @@ include_once("../config/config.php");
                                                 
 
                                                 <div class="form-group">
-                                                    <label>Tanggal Perolehan</label>
+                                                    <label>Tahun Perolehan</label>
                                                     <input type="date" class="form-control" name="tgl_perolehan" >
                                                 </div>
 

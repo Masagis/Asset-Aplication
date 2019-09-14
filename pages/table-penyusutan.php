@@ -114,20 +114,25 @@ include_once("../config/config.php");
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center">
+                                                <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#cetak' >Cetak Laporan
+                                                </button>
+                                            </div>
+                                        <!-- <div class="text-center">
                                             <form method='post' action='../controller/download_all.php' target="_blank" rel="nofollow">
                                                             
                                                             <?php 
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_asset ") ?>
                                                         <?php if ($data = mysqli_fetch_assoc($result)) {?>
                                                             <a href="../controller/download_all.php" target="_blank" rel="nofollow">
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan Seluruh Aset' target="_blank" class='btn btn-primary'>
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan Akhir' target="_blank" class='btn btn-primary'>
                                                             <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
                                                             <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
                                                         <?php 
                                                     } 
                                                     ?>
-                                            </form>
-                                        </div>
+                                            </form> -->
+                                        
+                                        
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
@@ -136,8 +141,8 @@ include_once("../config/config.php");
                                             <th class="text-center">Id Asset</th>
                                             <th class="text-center">Nomor Polisi</th>
                                             <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Tgl Perolehan</th>
-                                            <th class="text-center">Harga Baku</th>
+                                            <th class="text-center">Thn Perolehan</th>
+                                            <th class="text-center">Hrg Perolehan</th>
                                             <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Nilai Sisa</th>
                                             <th class="text-center">Aksi</th>
@@ -185,6 +190,57 @@ include_once("../config/config.php");
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="cetak" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">Cetak Laporan</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="../controller/download_all.php" method="post">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Dari Tahun :</label>
+                                                    <input type="date" class="form-control" name="thn_a" >
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Sampai Tahun :</label>
+                                                    <input type="date" class="form-control" name="thn_b" >
+                                                </div>
+
+                                                <button class="btn btn-primary btn-sm" type="submit">Cetak perPeriode</button>
+                                            </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                <a href="../controller/download_all.php" target="_blank" class=" btn btn-primary btn-sm">Cetak Semua</a>
+                                </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <script type="text/javascript">
+                        $(document).ready(function(){
+                            $('#edit_asset').on('show.bs.modal', function (e) {
+                                var idx = $(e.relatedTarget).data('id');
+                                //menggunakan fungsi ajax untuk pengambilan data
+                                $.ajax({
+                                    type : 'post',
+                                    url : 'detail_asset.php',
+                                    data :  'idx='+ idx,
+                                    success : function(data){
+                                    $('.hasil-data').html(data);//menampilkan data ke dalam modal
+                                    }
+                                });
+                            });
+                        });
+                    </script>
 
                 <footer class="footer">
                     <div class="w-100 clearfix">

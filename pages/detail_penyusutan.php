@@ -127,7 +127,7 @@ $tahun = $_POST['umur_ekonomis'];
                                                         $result = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE id_asset = '$id_penyusutan'") ?>
                                                         <?php while ($data = mysqli_fetch_assoc($result)) {?>
                                                             <a href="../controller/download.php" target="_blank" rel="nofollow">
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan' target="_blank" class='btn btn-primary'>
+                                                            <input type='submit' name='detail_susut' value='Cetak Laporan Transaksi' target="_blank" class='btn btn-primary'>
                                                             <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
                                                             <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
                                                         <?php 
@@ -151,25 +151,28 @@ $tahun = $_POST['umur_ekonomis'];
                                                 </div>
                                                 <div class="input-group">
                                                     <h6 style="margin-right: 5px;">Nomor Polisi</h6>
-                                                    <h4 style="margin-left: 65px; margin-right: 5px;">:</h4>
+                                                    <h4 style="margin-left: 66px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['nopol']; ?>">
                                                     </div> 
-                                                </div><div class="input-group">
+                                                </div>
+                                                <div class="input-group">
                                                     <h6 style="margin-right: 5px;">Keterangan</h6>
                                                     <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['kete_aset']; ?>">
                                                     </div> 
-                                                </div><div class="input-group">
-                                                    <h6 style="margin-right: 5px;">Tgl Perolehan</h6>
-                                                    <h4 style="margin-left: 59px; margin-right: 5px;">:</h4>
+                                                </div>
+                                                <div class="input-group">
+                                                    <h6 style="margin-right: 5px;">Thn Perolehan</h6>
+                                                    <h4 style="margin-left: 56px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['tgl_perolehan']; ?>">
                                                     </div> 
-                                                </div><div class="input-group">
+                                                </div>
+                                                <div class="input-group">
                                                     <h6 style="margin-right: 5px;">Harga Baku</h6>
-                                                    <h4 style="margin-left: 70px; margin-right: 5px;">:</h4>
+                                                    <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['hrg_baku']; ?>">
                                                     </div> 
@@ -177,16 +180,16 @@ $tahun = $_POST['umur_ekonomis'];
                                                 
                                             </div>
                                         <?php } ?>
-
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                             <ul></ul>
                                         <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Penyusutan Ke</th>
+                                            <th class="text-center">Umur Ekonomis</th>
                                             <th class="text-center">Tahun Penyusutan</th>
-                                            <th class="text-center">Nilai Sisa</th>
-                                            <th class="text-center">Nilai Susut</th>
+                                            <th class="text-center">Beban Penyusutan</th>
+                                            <th class="text-center">AKM Penyusutan</th>
+                                            <th class="text-center">Nilai Baku</th>
                                             
                                         </tr>
                                         </thead>
@@ -205,8 +208,9 @@ $tahun = $_POST['umur_ekonomis'];
                                                             $y = strtotime("$i year");
                                                             echo "<tr>
                                                             <td>".$no++."</td>
-                                                            <td>".$i."</td>
+                                                            <td>".$row['umur_ekonomis']."</td>
                                                             <td>".$year = date('Y', "+$y")."</td>
+                                                            <td>".$nilai."</td>
                                                             <td>".$row['nilai_sisa']."</td>
                                                             <td>".$susut."</td>
                                                             </tr>";
