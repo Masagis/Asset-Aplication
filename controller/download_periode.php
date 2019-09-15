@@ -6,17 +6,17 @@ require('../Cetakpdf/fpdf.php');
 
 $pdf = new FPDF('L','mm','A4');	//L = lanscape P= potrait		
 $pdf->SetLeftMargin(20);
-$pdf->SetTopMargin(0);
 // membuat halaman baru
 $pdf->AddPage();
  // mengambil gambar untuk header/kopsurat
 $pdf->Image('../assets/img/header.jpg',20,null,255,45,'jpg');
+ // setting tinggi dari kertas yang akan digunakan
+$pdf->SetTopMargin(20);
  // setting jenis font yang akan digunakan		
 $pdf->SetFont('Times','B',14);
-// $data=$this->Menu_model->getUnduh($kodemk);
    // mencetak string 
 $pdf->Cell(169,5,'',0,2);
-$pdf->Cell(93,4,'',0,0);$pdf->Cell(80,5,'LAPORAN PENYUSUTAN AKHIR','B',0,'C');
+$pdf->Cell(93,4,'',0,0);$pdf->Cell(83,5,'LAPORAN PENYUSUTAN PERIODE','B',0,'C');
 $pdf->Cell(169,4,'',0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(100,8,'',0,2);
@@ -25,12 +25,13 @@ $pdf->SetFont('Times','B',12,'C');
 $pdf->Cell(10,8,'No',1,0,'C');
 $pdf->Cell(25,8,'ID Susut',1,0,'C');
 $pdf->Cell(28,8,'Nomor Polisi',1,0,'C');
-$pdf->Cell(35,8,'Keterangan',1,0,'C');
-$pdf->Cell(30,8,'Tgl Perolehan',1,0,'C');
-$pdf->Cell(30,8,'Harga Baku',1,0,'C');
-$pdf->Cell(34,8,'Tahun Penyusutan',1,0,'C');
-$pdf->Cell(28,8,'Nilai Sisa',1,0,'C');
-$pdf->Cell(35,8,'Nilai Baku',1,1,'C');
+$pdf->Cell(31,8,'Keterangan',1,0,'C');
+$pdf->Cell(31,8,'Hrg Perolehan',1,0,'C');
+$pdf->Cell(34,8,'Thn Penyusutan',1,0,'C');
+$pdf->Cell(25,8,'Nilai Sisa',1,0,'C');
+$pdf->Cell(33,8,'Bbn Penyusutan',1,0,'C');
+$pdf->Cell(38,8,'Nilai Baku',1,1,'C');
+
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
@@ -43,32 +44,39 @@ while ($data = mysqli_fetch_array($sql)) {
 	$month = 12;
 	$bulan = date('n', strtotime($cc));
 	$bagi = $month + 1 - $bulan;
+	$total='0';
 	if($nilai_susut && isset($data['id_asset'])){
 		while($row = mysqli_fetch_array($nilai_susut)){
 			$nilai = ($row['hrg_baku'] - $row['nilai_sisa']) / $tahun;
 			$susut = $row['hrg_baku'];
-				for($i = 0; $i <= $tahun; $i++){
+			
+			for($i = 0; $i <= $tahun; $i++){
 					if ($i == "0") {
-		                $pertama = (($row['hrg_baku'] - $row['nilai_sisa']) / $tahun) * $bagi / 12;
-		                $susut = $susut - $pertama;
-		                $y = strtotime("$i year");
+		                $pertama = ($nilai * $bagi) / 12;
+		                $apa = $susut - $pertama;
+						$y = strtotime("$i year");
+						$totalbeban += $nilai;
+						$totalbaku += $apa;
+
 						$pdf->Cell(10,8, $no++,1, 0, 'C');
 						$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
 						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(35,8, $row['kete_aset'], 1, 0,'C');
-						$pdf->Cell(30,8, $row['tgl_perolehan'],1, 0, 'C');
-						$pdf->Cell(30,8, $row['hrg_baku'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['kete_aset'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['hrg_baku'], 1, 0,'C');
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
-						$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
-						$pdf->Cell(35,8, $susut, 1, 1,'C');
+						$pdf->Cell(25,8, $row['nilai_sisa'], 1, 0,'C');
+						$pdf->Cell(33,8, $nilai,1, 0, 'C');
+						$pdf->Cell(38,8, $apa, 1, 1,'C');
+						
 					}
 				}
+			}	
 		}
 	}
-}
 
+$pdf->SetFont('Times','B',14,'C');
+$pdf->Cell(184,8,'Total',1,0,'L');$pdf->Cell(33,8, $totalbeban,1, 0, 'C');$pdf->Cell(38,8, $totalbaku,1, 0, 'C');
 
-	
 
 // Memberikan Footer
 $pdf->Cell(169,12,'',0,1);
@@ -79,6 +87,7 @@ $pdf->Cell(169,20,'',0,3);
 $pdf->Cell(45,5,'(......................................)','B',0,'L');$pdf->Cell(155,5,'',0,0);$pdf->Cell(45,5,'(......................................)','B',0,'L');
 $pdf->Cell(50,5,'',0,1);
 // $pdf->Cell(114,7,'',0,0);$pdf->Cell(70,7,'',0,0,'L');
+ob_clean();
 	$pdf->Output();
 	$pdf->Stream(array("Attachment" => FALSE));
 ?>

@@ -7,17 +7,17 @@ require('../Cetakpdf/fpdf.php');
 
 $pdf = new FPDF('L','mm','A4');	//L = lanscape P= potrait		
 $pdf->SetLeftMargin(20);
-$pdf->SetTopMargin(0);
 // membuat halaman baru
 $pdf->AddPage();
  // mengambil gambar untuk header/kopsurat
 $pdf->Image('../assets/img/header.jpg',20,null,255,45,'jpg');
- // setting jenis font yang akan digunakan		
+ // setting tinggi dari kertas yang akan digunakan
+$pdf->SetTopMargin(20);
+ // setting jenis font yang akan digunakan
 $pdf->SetFont('Times','B',14);
-// $data=$this->Menu_model->getUnduh($kodemk);
    // mencetak string 
 $pdf->Cell(169,5,'',0,2);
-$pdf->Cell(93,4,'',0,0);$pdf->Cell(80,5,'LAPORAN PENYUSUTAN AKHIR','B',0,'C');
+$pdf->Cell(85,4,'',0,0);$pdf->Cell(100,5,'LAPORAN PENYUSUTAN PER KATEGORI','B',0,'C');
 $pdf->Cell(169,4,'',0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(100,8,'',0,2);
@@ -26,10 +26,10 @@ $pdf->SetFont('Times','B',12,'C');
 $pdf->Cell(10,8,'No',1,0,'C');
 $pdf->Cell(25,8,'ID Susut',1,0,'C');
 $pdf->Cell(28,8,'Nomor Polisi',1,0,'C');
-$pdf->Cell(35,8,'Keterangan',1,0,'C');
-$pdf->Cell(30,8,'Tgl Perolehan',1,0,'C');
-$pdf->Cell(30,8,'Harga Baku',1,0,'C');
-$pdf->Cell(34,8,'Tahun Penyusutan',1,0,'C');
+$pdf->Cell(31,8,'Keterangan',1,0,'C');
+$pdf->Cell(31,8,'Tgl Perolehan',1,0,'C');
+$pdf->Cell(31,8,'Hrg Perolehan',1,0,'C');
+$pdf->Cell(34,8,'Thn Penyusutan',1,0,'C');
 $pdf->Cell(28,8,'Nilai Sisa',1,0,'C');
 $pdf->Cell(35,8,'Nilai Baku',1,1,'C');
 //
@@ -50,15 +50,15 @@ while ($data = mysqli_fetch_array($sql)) {
 			$susut = $row['hrg_baku'];
 				for($i = 0; $i <= $tahun; $i++){
 					if ($i == "0") {
-		                $pertama = (($row['hrg_baku'] - $row['nilai_sisa']) / $tahun) * $bagi / 12;
+		                $pertama = ($nilai * $bagi) / 12;
 		                $susut = $susut - $pertama;
 		                $y = strtotime("$i year");
 						$pdf->Cell(10,8, $no++,1, 0, 'C');
 						$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
 						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(35,8, $row['kete_aset'], 1, 0,'C');
-						$pdf->Cell(30,8, $row['tgl_perolehan'],1, 0, 'C');
-						$pdf->Cell(30,8, $row['hrg_baku'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['kete_aset'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['tgl_perolehan'],1, 0, 'C');
+						$pdf->Cell(31,8, $row['hrg_baku'], 1, 0,'C');
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
 						$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
 						$pdf->Cell(35,8, $susut, 1, 1,'C');
@@ -68,9 +68,9 @@ while ($data = mysqli_fetch_array($sql)) {
 						$pdf->Cell(10,8, $no++,1, 0, 'C');
 						$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
 						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(35,8, $row['kete_aset'], 1, 0,'C');
-						$pdf->Cell(30,8, $row['tgl_perolehan'],1, 0, 'C');
-						$pdf->Cell(30,8, $row['hrg_baku'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['kete_aset'], 1, 0,'C');
+						$pdf->Cell(31,8, $row['tgl_perolehan'],1, 0, 'C');
+						$pdf->Cell(31,8, $row['hrg_baku'], 1, 0,'C');
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
 						$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
 						$pdf->Cell(35,8, $susut, 1, 1,'C');
@@ -80,8 +80,6 @@ while ($data = mysqli_fetch_array($sql)) {
 	}
 }
 
-
-	
 
 // Memberikan Footer
 $pdf->Cell(169,12,'',0,1);
