@@ -114,24 +114,9 @@ include_once("../config/config.php");
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center">
-                                                <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#cetak' >Cetak Laporan
+                                                <button type='button' class='btn btn-primary ' data-toggle='modal' data-target='#cetak'><i class="fa fa-file-pdf" aria-hidden="true"></i>Cetak Laporan
                                                 </button>
                                             </div>
-                                        <!-- <div class="text-center">
-                                            <form method='post' action='../controller/download_all.php' target="_blank" rel="nofollow">
-                                                            
-                                                            <?php 
-                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_asset ") ?>
-                                                        <?php if ($data = mysqli_fetch_assoc($result)) {?>
-                                                            <a href="../controller/download_all.php" target="_blank" rel="nofollow">
-                                                            <input type='submit' name='detail_susut' value='Cetak Laporan Akhir' target="_blank" class='btn btn-primary'>
-                                                            <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
-                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
-                                                        <?php 
-                                                    } 
-                                                    ?>
-                                            </form> -->
-                                        
                                         
                                         <div class="dt-responsive">
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
@@ -207,8 +192,8 @@ include_once("../config/config.php");
                                                 <div class="form-group">
                                                     <label>Pilih Kategori</label>
                                                         <select name='id' class="form-control select2">
-                                                            <option value="R2">Roda 2</option>
-                                                            <option value="R4">Roda 4</option>
+                                                            <option value="R2">Roda 2 - Motor</option>
+                                                            <option value="R4">Roda 4 - Mobil</option>
                                                         </select>
                                                 </div>
                                                 <button class="btn btn-primary btn-sm" type="submit">Cetak Per Kategori</button>

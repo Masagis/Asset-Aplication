@@ -130,7 +130,9 @@ $bulan = date('n', strtotime($cc));
                                                             <a href="../controller/download.php" target="_blank" rel="nofollow">
                                                             <input type='submit' name='detail_susut' value='Cetak Laporan Transaksi' target="_blank" class='btn btn-primary'>
                                                             <input type='hidden' name='id' value="<?php echo $data['id_asset']; ?>">
-                                                            <input type='hidden' name='umur' value="<?php echo $data['umur_ekonomis']; ?>"></a>
+                                                            <input type='hidden' name='umur_ekonomis' value="<?php echo $data['umur_ekonomis']; ?>">
+                                                            <input type='hidden' name='thn_perolehan' value="<?php echo $data['tgl_perolehan']; ?>">
+                                                            </a>
                                                         <?php 
                                                     } 
                                                     ?>
@@ -216,7 +218,7 @@ $bulan = date('n', strtotime($cc));
                                                         $susut = $row['hrg_baku'];
                                                         for($i = 0; $i <= $tahun; $i++){
                                                             if ($i == "0") {
-                                                                $pertama = (($row['hrg_baku'] - $row['nilai_sisa']) / $tahun) * $bagi / 12;
+                                                                $pertama = ($nilai* $bagi) / 12;
                                                                 $susut = $susut - $pertama;
                                                                 $akumulasi = $akumulasi + $pertama;
                                                                 $y = strtotime("$i year");
