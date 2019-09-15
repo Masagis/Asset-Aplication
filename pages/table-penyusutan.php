@@ -171,6 +171,7 @@ include_once("../config/config.php");
                                                             <input class='btn btn-primary' type='submit' name='detail_susut' value='Lihat detail'/>
                                                             <input type='hidden' name='id' value=".$row['id_asset'].">
                                                             <input type='hidden' name='umur_ekonomis' value=".$row['umur_ekonomis'].">
+                                                            <input type='hidden' name='thn_perolehan' value=".$row['tgl_perolehan'].">
                                                             </form>
 
                                                             </td>
@@ -196,29 +197,27 @@ include_once("../config/config.php");
                                 <div class="modal-content">
                                 
                                     <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Cetak Laporan</h4>
+                                        <h4 class="modal-title w-100 font-weight-bold">Cetak Laporan Penyusutan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="../controller/download_all.php" method="post">
+                                        <form action="../controller/download_kategori.php" method="post" target="_blank">
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <label>Dari Tahun :</label>
-                                                    <input type="date" class="form-control" name="thn_a" >
+                                                    <label>Pilih Kategori</label>
+                                                        <select name='id' class="form-control select2">
+                                                            <option value="R2">Roda 2</option>
+                                                            <option value="R4">Roda 4</option>
+                                                        </select>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label>Sampai Tahun :</label>
-                                                    <input type="date" class="form-control" name="thn_b" >
-                                                </div>
-
-                                                <button class="btn btn-primary btn-sm" type="submit">Cetak perPeriode</button>
+                                                <button class="btn btn-primary btn-sm" type="submit">Cetak Per Kategori</button>
                                             </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                 <a href="../controller/download_all.php" target="_blank" class=" btn btn-primary btn-sm">Cetak Semua</a>
+                                <a href="../controller/download_periode.php" target="_blank" class=" btn btn-primary btn-sm">Cetak Hanya Periode Saat Ini</a>
                                 </div>
                                     
                                 </div>

@@ -5,7 +5,8 @@ include_once("../config/config.php");
 
 $id_penyusutan = $_POST['id'];
 $tahun = $_POST['umur_ekonomis'];
-
+$cc = $_POST['thn_perolehan'];
+$bulan = date('n', strtotime($cc));
 
 
 ?>
@@ -144,21 +145,21 @@ $tahun = $_POST['umur_ekonomis'];
                                             <div class="form-horizontal">
                                                 <div class="input-group">
                                                     <h6 style="margin-right: 5px;">ID Aset</h6>
-                                                    <h4 style="margin-left: 105px; margin-right: 5px;">:</h4>
+                                                    <h4 style="margin-left: 108px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['id_asset']; ?>">
                                                     </div> 
                                                 </div>
                                                 <div class="input-group">
                                                     <h6 style="margin-right: 5px;">Nomor Polisi</h6>
-                                                    <h4 style="margin-left: 66px; margin-right: 5px;">:</h4>
+                                                    <h4 style="margin-left: 69px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['nopol']; ?>">
                                                     </div> 
                                                 </div>
                                                 <div class="input-group">
                                                     <h6 style="margin-right: 5px;">Keterangan</h6>
-                                                    <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
+                                                    <h4 style="margin-left: 78px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['kete_aset']; ?>">
                                                     </div> 
@@ -175,6 +176,13 @@ $tahun = $_POST['umur_ekonomis'];
                                                     <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['hrg_baku']; ?>">
+                                                    </div> 
+                                                </div>
+                                                <div class="input-group">
+                                                    <h6 style="margin-right: 5px;">Nilai Sisa</h6>
+                                                    <h4 style="margin-left: 95px; margin-right: 5px;">:</h4>
+                                                    <div class="col-xs-15">
+                                                        <input class="form-control" readonly type="text" value="<?php echo $row['nilai_sisa']; ?>">
                                                     </div> 
                                                 </div>
                                                 
@@ -198,22 +206,42 @@ $tahun = $_POST['umur_ekonomis'];
                                                 include '../config/config.php';
                                                 $nilai_susut = mysqli_query($mysqli,"SELECT * FROM tb_asset  WHERE id_asset = '$id_penyusutan'");
                                                 $no = 1;
+                                                $month = 12;
+                                                $bagi = $month + 1 - $bulan;
+                                                $akumulasi = 0;
                                                 if($nilai_susut && isset($_POST['id'])){
                                                     while($row = mysqli_fetch_array($nilai_susut))
                                                     {
                                                         $nilai = ($row['hrg_baku'] - $row['nilai_sisa']) / $tahun;
                                                         $susut = $row['hrg_baku'];
-                                                        for($i = 1; $i <= $tahun; $i++){
-                                                            $susut = $susut - $nilai;
-                                                            $y = strtotime("$i year");
-                                                            echo "<tr>
-                                                            <td>".$no++."</td>
-                                                            <td>".$row['umur_ekonomis']."</td>
-                                                            <td>".$year = date('Y', "+$y")."</td>
-                                                            <td>".$nilai."</td>
-                                                            <td>".$row['nilai_sisa']."</td>
-                                                            <td>".$susut."</td>
-                                                            </tr>";
+                                                        for($i = 0; $i <= $tahun; $i++){
+                                                            if ($i == "0") {
+                                                                $pertama = (($row['hrg_baku'] - $row['nilai_sisa']) / $tahun) * $bagi / 12;
+                                                                $susut = $susut - $pertama;
+                                                                $akumulasi = $akumulasi + $pertama;
+                                                                $y = strtotime("$i year");
+                                                                echo "<tr>
+                                                                <td>".$no++."</td>
+                                                                <td>".$row['umur_ekonomis']."</td>
+                                                                <td>".$year = date('Y', "+$y")."</td>
+                                                                <td>".$nilai."</td>
+                                                                <td>".$akumulasi."</td>
+                                                                <td>".$susut."</td>
+                                                                </tr>";
+                                                            }else{
+                                                                $susut = $susut - $nilai;
+                                                                $akumulasi = $akumulasi + $nilai;
+                                                                $y = strtotime("$i year");
+                                                                echo "<tr>
+                                                                <td>".$no++."</td>
+                                                                <td>".$row['umur_ekonomis']."</td>
+                                                                <td>".$year = date('Y', "+$y")."</td>
+                                                                <td>".$nilai."</td>
+                                                                <td>".$akumulasi."</td>
+                                                                <td>".$susut."</td>
+                                                                </tr>";
+                                                            }
+                                                            
                                                             
                                                         }
                                                     }

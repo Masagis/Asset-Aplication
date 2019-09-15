@@ -1,6 +1,7 @@
 <?php
 
 include_once("../config/config.php");
+$id = $_POST['id'];
 require('../Cetakpdf/fpdf.php');
 
 
@@ -34,7 +35,7 @@ $pdf->Cell(35,8,'Nilai Baku',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 $no=1;
-$sql = mysqli_query($mysqli,"SELECT * FROM tb_asset");
+$sql = mysqli_query($mysqli,"SELECT * FROM tb_asset WHERE kategori = '$id'");
 while ($data = mysqli_fetch_array($sql)) {
 	$id_penyusutan = $data['id_asset'];
 	$nilai_susut = mysqli_query($mysqli,"SELECT * FROM tb_asset  WHERE id_asset = '$id_penyusutan'");

@@ -61,18 +61,6 @@ while ($data = mysqli_fetch_array($sql)) {
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
 						$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
 						$pdf->Cell(35,8, $susut, 1, 1,'C');
-					}else{
-						$susut = $susut - $nilai;
-						$y = strtotime("$i year");
-						$pdf->Cell(10,8, $no++,1, 0, 'C');
-						$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
-						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(35,8, $row['kete_aset'], 1, 0,'C');
-						$pdf->Cell(30,8, $row['tgl_perolehan'],1, 0, 'C');
-						$pdf->Cell(30,8, $row['hrg_baku'], 1, 0,'C');
-						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
-						$pdf->Cell(28,8, $row['nilai_sisa'], 1, 0,'C');
-						$pdf->Cell(35,8, $susut, 1, 1,'C');
 					}
 				}
 		}
