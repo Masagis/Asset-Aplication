@@ -23,14 +23,14 @@ $pdf->Cell(100,8,'',0,2);
 //
 $pdf->SetFont('Times','B',12,'C');
 $pdf->Cell(10,8,'No',1,0,'C');
-$pdf->Cell(25,8,'ID Susut',1,0,'C');
+$pdf->Cell(22,8,'ID Susut',1,0,'C');
 $pdf->Cell(28,8,'Nomor Polisi',1,0,'C');
-$pdf->Cell(31,8,'Keterangan',1,0,'C');
+$pdf->Cell(29,8,'Keterangan',1,0,'C');
 $pdf->Cell(31,8,'Hrg Perolehan',1,0,'C');
 $pdf->Cell(34,8,'Thn Penyusutan',1,0,'C');
-$pdf->Cell(25,8,'Nilai Sisa',1,0,'C');
-$pdf->Cell(33,8,'Bbn Penyusutan',1,0,'C');
-$pdf->Cell(38,8,'Nilai Baku',1,1,'C');
+$pdf->Cell(22,8,'Nilai Sisa',1,0,'C');
+$pdf->Cell(37,8,'Bbn Penyusutan',1,0,'C');
+$pdf->Cell(42,8,'Nilai Baku',1,1,'C');
 
 //
 $pdf->SetFont('Times','',12,'C');
@@ -59,14 +59,14 @@ while ($data = mysqli_fetch_array($sql)) {
 						$totalbaku += $apa;
 
 						$pdf->Cell(10,8, $no++,1, 0, 'C');
-						$pdf->Cell(25,8, $row['id_asset'],1, 0, 'C');
+						$pdf->Cell(22,8, $row['id_asset'],1, 0, 'C');
 						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(31,8, $row['kete_aset'], 1, 0,'C');
+						$pdf->Cell(29,8, $row['kete_aset'], 1, 0,'C');
 						$pdf->Cell(31,8, $row['hrg_baku'], 1, 0,'C');
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
-						$pdf->Cell(25,8, $row['nilai_sisa'], 1, 0,'C');
-						$pdf->Cell(33,8, $nilai,1, 0, 'C');
-						$pdf->Cell(38,8, $apa, 1, 1,'C');
+						$pdf->Cell(22,8, $row['nilai_sisa'], 1, 0,'C');
+						$pdf->Cell(37,8, $nilai,1, 0, 'C');
+						$pdf->Cell(42,8, $apa, 1, 1,'C');
 						
 					}
 				}
@@ -74,8 +74,8 @@ while ($data = mysqli_fetch_array($sql)) {
 		}
 	}
 
-$pdf->SetFont('Times','B',14,'C');
-$pdf->Cell(184,8,'Total',1,0,'L');$pdf->Cell(33,8, $totalbeban,1, 0, 'C');$pdf->Cell(38,8, $totalbaku,1, 0, 'C');
+$pdf->SetFont('Times','B',12,'C');
+$pdf->Cell(176,8,'Total',1,0,'L');$pdf->Cell(37,8, $totalbeban,1, 0, 'C');$pdf->Cell(42,8, $totalbaku,1, 0, 'C');
 
 
 // Memberikan Footer

@@ -47,7 +47,7 @@ $pdf->Cell(35,8,'Umur Ekonomis',1,0,'C');
 $pdf->Cell(40,8,'Tahun Penyusutan',1,0,'C');
 $pdf->Cell(40,8,'Beban Penyusutan',1,0,'C');
 $pdf->Cell(45,8,'Akumulasi Penyusutan',1,0,'C');
-$pdf->Cell(40,8,'Nilai Baku',1,1,'C');
+$pdf->Cell(40,8,'Nilai Sisa',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 

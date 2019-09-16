@@ -167,14 +167,14 @@ $bulan = date('n', strtotime($cc));
                                                     </div> 
                                                 </div>
                                                 <div class="input-group">
-                                                    <h6 style="margin-right: 5px;">Thn Perolehan</h6>
+                                                    <h6 style="margin-right: 5px;">Tahun Perolehan</h6>
                                                     <h4 style="margin-left: 56px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['tgl_perolehan']; ?>">
                                                     </div> 
                                                 </div>
                                                 <div class="input-group">
-                                                    <h6 style="margin-right: 5px;">Harga Baku</h6>
+                                                    <h6 style="margin-right: 5px;">Harga Perolehan</h6>
                                                     <h4 style="margin-left: 76px; margin-right: 5px;">:</h4>
                                                     <div class="col-xs-15">
                                                         <input class="form-control" readonly type="text" value="<?php echo $row['hrg_baku']; ?>">

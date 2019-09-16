@@ -17,7 +17,7 @@ $pdf->SetFont('Times','B',14);
 // $data=$this->Menu_model->getUnduh($kodemk);
    // mencetak string 
 $pdf->Cell(169,5,'',0,2);
-$pdf->Cell(93,4,'',0,0);$pdf->Cell(80,5,'LAPORAN PENYUSUTAN AKHIR','B',0,'C');
+$pdf->Cell(100,4,'',0,0);$pdf->Cell(65,5,'LAPORAN KERTAS KERJA','B',0,'C');
 $pdf->Cell(169,4,'',0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(100,8,'',0,2);
