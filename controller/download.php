@@ -37,7 +37,7 @@ $pdf->Cell(34,8,'Nomor Polisi',0,0);	$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$
 $pdf->Cell(34,8,'Keterangan',0,0);		$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$ap['kete_aset'],0,1);
 $pdf->Cell(34,8,'Tahun Perolehan',0,0);	$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$ap['tgl_perolehan'],0,1);
 $pdf->Cell(34,8,'Harga Perolehan',0,0);	$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$ap['hrg_baku'],0,1);
-$pdf->Cell(34,8,'Nilai Baku',0,0);		$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$ap['nilai_sisa'],0,1);
+$pdf->Cell(34,8,'Nilai Sisa',0,0);		$pdf->Cell(10,8,':',0,0);	$pdf->Cell(10,8,$ap['nilai_sisa'],0,1);
 $pdf->Cell(169,10,'',0,3);
 }
 
@@ -47,7 +47,7 @@ $pdf->Cell(35,8,'Umur Ekonomis',1,0,'C');
 $pdf->Cell(40,8,'Tahun Penyusutan',1,0,'C');
 $pdf->Cell(40,8,'Beban Penyusutan',1,0,'C');
 $pdf->Cell(45,8,'Akumulasi Penyusutan',1,0,'C');
-$pdf->Cell(40,8,'Nilai Sisa',1,1,'C');
+$pdf->Cell(40,8,'Nilai Baku',1,1,'C');
 //
 $pdf->SetFont('Times','',12,'C');
 
