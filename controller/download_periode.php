@@ -25,12 +25,12 @@ $pdf->SetFont('Times','B',12,'C');
 $pdf->Cell(10,8,'No',1,0,'C');
 $pdf->Cell(22,8,'ID Susut',1,0,'C');
 $pdf->Cell(28,8,'Nomor Polisi',1,0,'C');
-$pdf->Cell(29,8,'Keterangan',1,0,'C');
+$pdf->Cell(47,8,'Keterangan',1,0,'C');
 $pdf->Cell(31,8,'Hrg Perolehan',1,0,'C');
 $pdf->Cell(34,8,'Thn Penyusutan',1,0,'C');
 $pdf->Cell(22,8,'Nilai Sisa',1,0,'C');
-$pdf->Cell(37,8,'Bbn Penyusutan',1,0,'C');
-$pdf->Cell(42,8,'Nilai Baku',1,1,'C');
+$pdf->Cell(37,8,'Bbn Penyusutan',1,1,'C');
+// $pdf->Cell(42,8,'Nilai Baku',1,1,'C');
 
 //
 $pdf->SetFont('Times','',12,'C');
@@ -43,30 +43,30 @@ while ($data = mysqli_fetch_array($sql)) {
 	$cc = $data['tgl_perolehan'];
 	$month = 12;
 	$bulan = date('n', strtotime($cc));
-	$bagi = $month + 1 - $bulan;
-	$total='0';
+	$bagi = $month - $bulan;
+	$totalbeban=0;
 	if($nilai_susut && isset($data['id_asset'])){
 		while($row = mysqli_fetch_array($nilai_susut)){
 			$nilai = ($row['hrg_baku'] - $row['nilai_sisa']) / $tahun;
 			$susut = $row['hrg_baku'];
 			
 			for($i = 0; $i <= $tahun; $i++){
-					if ($i == "0") {
-		                $pertama = ($nilai * $bagi) / 12;
-		                $apa = $susut - $pertama;
+					if ($i == 0) {
+		                $pertama = (($nilai * $bagi) / 12);
+						$apa = $susut - $pertama;
 						$y = strtotime("$i year");
-						$totalbeban += $nilai;
-						$totalbaku += $apa;
+						$totalbeban += ($pertama);
+						// $totalbaku += $apa;
 
 						$pdf->Cell(10,8, $no++,1, 0, 'C');
 						$pdf->Cell(22,8, $row['id_asset'],1, 0, 'C');
 						$pdf->Cell(28,8, $row['nopol'],1, 0, 'C');
-						$pdf->Cell(29,8, $row['kete_aset'], 1, 0,'C');
+						$pdf->Cell(47,8, $row['kete_aset'], 1, 0);
 						$pdf->Cell(31,8, $row['hrg_baku'], 1, 0,'C');
 						$pdf->Cell(34,8, $year = date('Y', "+$y"),1, 0, 'C');
 						$pdf->Cell(22,8, $row['nilai_sisa'], 1, 0,'C');
-						$pdf->Cell(37,8, $nilai,1, 0, 'C');
-						$pdf->Cell(42,8, $apa, 1, 1,'C');
+						$pdf->Cell(37,8, $pertama,1, 1, 'C');
+						// $pdf->Cell(42,8, $apa, 1, 1,'C');
 						
 					}
 				}
@@ -75,7 +75,7 @@ while ($data = mysqli_fetch_array($sql)) {
 	}
 
 $pdf->SetFont('Times','B',12,'C');
-$pdf->Cell(176,8,'Total',1,0,'L');$pdf->Cell(37,8, $totalbeban,1, 0, 'C');$pdf->Cell(42,8, $totalbaku,1, 0, 'C');
+$pdf->Cell(194,8,'Total',1,0,'L');$pdf->Cell(37,8, $totalbeban,1, 0, 'C'); //$pdf->Cell(42,8, $totalbaku,1, 0, 'C');
 
 
 // Memberikan Footer

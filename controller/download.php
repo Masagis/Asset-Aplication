@@ -63,7 +63,7 @@ while($row = mysqli_fetch_array($nilai_susut))
 	$susut = $row['hrg_baku'];
 		for($i = 0; $i <= $tahun; $i++){
 			if($i=="0"){
-			$pertama = (($row['hrg_baku'] - $row['nilai_sisa']) / $tahun) * $bagi / 12;
+			$pertama = (($nilai* $bagi) / 12);
             $susut = $susut - $pertama;
             $akumulasi = $akumulasi + $pertama;
             $y = strtotime("$i year");

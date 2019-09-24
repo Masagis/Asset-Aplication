@@ -204,16 +204,6 @@ include_once("../config/config.php");
                                                     </select>
                                                 </div>
                                                 
-                                            <!-- <div class="form-group">
-                                                    <label>Nomor Polisi / Plat Kendaraan</label>
-                                                    <select name="plat" class="form-control" required>
-                                                        <?php 
-                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
-                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
-                                                            <option value="<?php echo $data['nopol']; ?>"><?php echo $data['nopol']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div> -->
                                                 <div class="form-group">
                                                     <label>Nomor Polisi / Plat Kendaraan</label>
                                                     <input type="text" class="form-control" name="plat" placeholder="Masukan Nomor Polisi / Plat Kendaraan" >
@@ -221,13 +211,7 @@ include_once("../config/config.php");
 
                                                 <div class="form-group">
                                                     <label>Keterangan</label>
-                                                    <select name="keterangan" class="form-control" required>
-                                                        <?php 
-                                                        $result = mysqli_query($mysqli,"SELECT * FROM tb_kategori ORDER BY id_kategori ASC") ?>
-                                                        <?php while ($data = mysqli_fetch_assoc($result)) {?>
-                                                            <option value="<?php echo $data['kete_kategori']; ?>"><?php echo $data['kete_kategori']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" name="keterangan" placeholder="Masukan Nomor Nama / Merk Kendaraan" >
                                                 </div>
                                                 
 

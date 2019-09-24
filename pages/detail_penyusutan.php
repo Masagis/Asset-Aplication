@@ -218,7 +218,7 @@ $bulan = date('n', strtotime($cc));
                                                         $susut = $row['hrg_baku'];
                                                         for($i = 0; $i <= $tahun; $i++){
                                                             if ($i == "0") {
-                                                                $pertama = ($nilai* $bagi) / 12;
+                                                                $pertama = (($nilai* $bagi) / 12);
                                                                 $susut = $susut - $pertama;
                                                                 $akumulasi = $akumulasi + $pertama;
                                                                 $y = strtotime("$i year");
