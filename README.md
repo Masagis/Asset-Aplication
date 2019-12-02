@@ -1,6 +1,3 @@
-# Free Bootstrap 4 Admin Template - Themekit  
+# Aplikasi Menghitung Penyusutan Aset
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-[![Bootstrap Admin Template](http://themekit.lavalite.org/assets/images/banner.png)](http://themekit.lavalite.org/)
-
+Sistem penghitung penyustan aset berbasis websit yang akan memudahkan Anda mengelola aset yang anda miliki.
